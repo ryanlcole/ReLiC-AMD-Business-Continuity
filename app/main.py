@@ -7,7 +7,7 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
 from app.inference import amd_configured
-from app.relic import evaluate_case
+from app.relic import continuity_snapshot, evaluate_case
 
 ROOT = Path(__file__).resolve().parents[1]
 POLICY_PATH = ROOT / "data" / "demo-company" / "policies.json"
@@ -15,7 +15,7 @@ DEMO_PATH = ROOT / "app" / "static" / "index.html"
 
 app = FastAPI(
     title="ReLiC AMD Business Continuity",
-    version="0.2.0",
+    version="0.3.0",
     description="Provenance-aware business decision continuity prototype.",
 )
 
@@ -36,9 +36,16 @@ def status() -> dict:
     return {
         "product": "ReLiC AMD Business Continuity",
         "status": "hackathon-mvp",
+        "runecore": "authority-continuity-scaffold",
+        "continuity": continuity_snapshot(),
         "amd_vllm_configured": amd_configured(),
         "warning": "AMD execution is not claimed until the event endpoint is configured and verified.",
     }
+
+
+@app.get("/continuity")
+def continuity() -> dict:
+    return continuity_snapshot()
 
 
 @app.get("/evidence")
