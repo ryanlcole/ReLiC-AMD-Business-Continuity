@@ -1,0 +1,21 @@
+[
+  {
+    "id": "POL-2026-01",
+    "effective_date": "2026-01-01",
+    "kind": "policy",
+    "text": "Refunds over $500 require manager approval."
+  },
+  {
+    "id": "EXC-2026-03",
+    "effective_date": "2026-03-01",
+    "kind": "exception",
+    "text": "Enterprise Plus customers may receive refunds up to $1,000 without manager approval."
+  },
+  {
+    "id": "COR-2026-04",
+    "effective_date": "2026-04-01",
+    "kind": "correction",
+    "corrects": "EXC-2026-03",
+    "text": "The Enterprise Plus exception applies only while the customer's Enterprise Plus contract is active."
+  }
+]
