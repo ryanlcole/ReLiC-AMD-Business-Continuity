@@ -1,0 +1,57 @@
+{
+  "people": [
+    {"id": "worker-1", "display_name": "Demo Worker"}
+  ],
+  "rates": [
+    {
+      "id": "RATE-001",
+      "person_id": "worker-1",
+      "amount": "20.00",
+      "unit": "hour",
+      "valid_from": "2026-01-01",
+      "valid_to": "2026-03-31",
+      "recorded_at": "2026-01-01T12:00:00+00:00",
+      "source": "PAY-MEMO-001",
+      "authority_id": "PAY-AUTH-001"
+    },
+    {
+      "id": "RATE-002",
+      "person_id": "worker-1",
+      "amount": "25.00",
+      "unit": "hour",
+      "valid_from": "2026-04-01",
+      "valid_to": null,
+      "recorded_at": "2026-04-01T12:00:00+00:00",
+      "source": "PAY-MEMO-002",
+      "authority_id": "PAY-AUTH-002"
+    },
+    {
+      "id": "RATE-003",
+      "person_id": "worker-1",
+      "amount": "22.00",
+      "unit": "hour",
+      "valid_from": "2026-02-01",
+      "valid_to": "2026-02-28",
+      "recorded_at": "2026-10-09T20:08:00+00:00",
+      "source": "RETROACTIVE-CORRECTION-001",
+      "authority_id": "PAY-AUTH-003",
+      "note": "Learned later, applies to February work. Original payment history remains unchanged."
+    }
+  ],
+  "work": [
+    {
+      "id": "WORK-001",
+      "person_id": "worker-1",
+      "worked_on": "2026-02-10",
+      "units": "8",
+      "paid_amount": "160.00",
+      "recorded_at": "2026-02-10T22:00:00+00:00"
+    }
+  ],
+  "expected_continuity": {
+    "what_was_known_on_2026-02-10": "20.00/hour",
+    "what_is_now_known_to_apply_to_2026-02-10": "22.00/hour",
+    "additional_amount_due_for_WORK-001": "16.00",
+    "current_rate_on_2026-10-09": "25.00/hour"
+  }
+}
