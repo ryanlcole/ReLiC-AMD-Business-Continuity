@@ -6,6 +6,8 @@ Every error record must preserve temporal continuity. Record both **when the eve
 
 ## ERR-2026-10-09-001 — Test import path failed in CI
 
+- **occurred_at:** 2026-10-09 (exact time not preserved in the original record)
+- **recorded_at:** 2026-10-09 (exact time not preserved in the original record)
 - **Observed:** GitHub CI could not resolve the Python `app` package during pytest collection.
 - **Impact:** The build could not be truthfully described as verified.
 - **Cause:** The repository root was not explicitly established for pytest imports in CI.
@@ -15,6 +17,8 @@ Every error record must preserve temporal continuity. Record both **when the eve
 
 ## ERR-2026-10-09-002 — Static demo existed before it was actually served
 
+- **occurred_at:** 2026-10-09 (exact time not preserved in the original record)
+- **recorded_at:** 2026-10-09 (exact time not preserved in the original record)
 - **Observed:** `app/static/index.html` existed, but the FastAPI application initially did not route a browser request to it.
 - **Impact:** The existence of UI source was temporarily mistaken for a usable UI.
 - **Correction:** FastAPI was changed to serve the demo and the static GitHub Pages reference demo was added separately.
@@ -22,6 +26,8 @@ Every error record must preserve temporal continuity. Record both **when the eve
 
 ## ERR-2026-10-09-003 — Replit was an unsuitable continuity host
 
+- **occurred_at:** 2026-10-09 (exact time not preserved in the original record)
+- **recorded_at:** 2026-10-09 (exact time not preserved in the original record)
 - **Observed:** A Replit app could be created through the connected integration, but publication was blocked by the account's Autoscale deployment limit and the user had no Replit credits intended for this work.
 - **Impact:** Replit could not be relied upon as the project's continuing no-surprise-cost host.
 - **Correction:** Treat Replit as non-authoritative/optional tooling and keep the project source in GitHub. Prefer a static zero-runtime-cost reference surface for the deterministic demo; keep runtime deployment separate from source truth.
