@@ -8,7 +8,13 @@ from typing import Iterable
 
 @dataclass(frozen=True)
 class RatePeriod:
-    """A compensation fact with both valid-time and recorded-time provenance."""
+    """A compensation fact with both valid-time and recorded-time provenance.
+
+    valid_from/valid_to = when the fact applies in the world.
+    recorded_at = when ReLiC Share learned the fact.
+    These clocks must never be collapsed: a fact can be learned today but apply
+    to work performed months ago.
+    """
 
     id: str
     person_id: str
@@ -23,6 +29,10 @@ class RatePeriod:
     @property
     def rate(self) -> Decimal:
         return Decimal(self.amount)
+
+    @property
+    def learned_at(self) -> datetime:
+        return datetime.fromisoformat(self.recorded_at.replace("Z", "+00:00"))
 
     def applies_on(self, day: date) -> bool:
         start = date.fromisoformat(self.valid_from)
@@ -60,20 +70,34 @@ def utc_timestamp() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
-def _active_records(records: Iterable[RatePeriod]) -> list[RatePeriod]:
-    by_id = {record.id: record for record in records}
+def _known_records(records: Iterable[RatePeriod], known_at: datetime | None) -> list[RatePeriod]:
+    records = list(records)
+    if known_at is None:
+        return records
+    return [record for record in records if record.learned_at <= known_at]
+
+
+def _active_records(records: Iterable[RatePeriod], known_at: datetime | None = None) -> list[RatePeriod]:
+    known = _known_records(records, known_at)
+    by_id = {record.id: record for record in known}
     superseded = {record.supersedes for record in by_id.values() if record.supersedes}
     return [record for record in by_id.values() if record.id not in superseded]
 
 
-def applicable_rate(records: Iterable[RatePeriod], person_id: str, on_date: date) -> RatePeriod:
+def applicable_rate(
+    records: Iterable[RatePeriod],
+    person_id: str,
+    on_date: date,
+    *,
+    known_at: datetime | None = None,
+) -> RatePeriod:
+    """Resolve what rate applies to work date, optionally as knowledge existed then."""
     candidates = [
-        record for record in _active_records(records)
+        record for record in _active_records(records, known_at)
         if record.person_id == person_id and record.applies_on(on_date)
     ]
     if not candidates:
         raise LookupError(f"No applicable rate for {person_id} on {on_date.isoformat()}")
-    # Later valid_from wins; recorded_at breaks ties so corrections are deterministic.
     return max(candidates, key=lambda r: (r.valid_from, r.recorded_at, r.id))
 
 
@@ -84,14 +108,14 @@ def current_rate(records: Iterable[RatePeriod], person_id: str, today: date) -> 
 def reconcile_history(
     rates: Iterable[RatePeriod], work: Iterable[WorkRecord], person_id: str
 ) -> list[Adjustment]:
-    """Re-evaluate past work against the authority that is now known to apply then.
+    """Re-evaluate past work against authority now known to apply to that past.
 
-    This supports retroactive/backdated corrections without rewriting the original
-    work/payment record. A positive delta means additional compensation is due; a
-    negative delta means the historical payment exceeded the now-applicable amount.
-    Any real payment action remains subject to applicable human law and approval.
+    Original work/payment records are not rewritten. A positive delta means
+    additional compensation is due mathematically; a negative delta means the
+    historical payment exceeded the now-applicable amount. Actual payment or
+    recovery remains subject to applicable law, contract, authority and review.
     """
-
+    rates = list(rates)
     adjustments: list[Adjustment] = []
     for item in work:
         if item.person_id != person_id:
