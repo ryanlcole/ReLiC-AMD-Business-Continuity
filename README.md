@@ -48,6 +48,19 @@ Current status:
 
 A $750 refund for Enterprise Standard should therefore require manager approval. The same refund for an active Enterprise Plus customer should be eligible for automatic approval.
 
+## Sustainable preview hosting
+
+The repository now includes a **zero-runtime-cost static reference demo** in `docs/` for GitHub Pages.
+
+This is intentional ReLiC separation:
+
+- **Static reference demo** — deterministic browser-side decision logic; safe to publish without secrets.
+- **FastAPI service** — development/API boundary for tests and later server-side integration.
+- **AMD/vLLM inference** — remains separate until real AMD infrastructure is connected and verified.
+- **Evolus workflow** — remains separate until the event workspace is connected and verified.
+
+The public preview should be hosted from the `main` branch's `/docs` folder with GitHub Pages. No API keys belong in the static site.
+
 ## Run locally
 
 ```bash
