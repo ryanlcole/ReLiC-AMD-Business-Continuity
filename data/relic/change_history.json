@@ -1,0 +1,38 @@
+[
+  {
+    "id": "CHANGE-2026-10-09-001",
+    "timestamp": "2026-10-09",
+    "component": "hackathon_mvp",
+    "change": "Created and verified the initial ReLiC Business Continuity MVP.",
+    "why": "Establish a small testable reference implementation before AMD and Evolus event integrations are available.",
+    "authority_ids": ["AUTH-RELIC-CANON-001"],
+    "evidence": ["tests/test_engine.py", ".github/workflows/ci.yml"],
+    "result": "deterministic_reference_available",
+    "verification": "CI success before merge",
+    "supersedes": null
+  },
+  {
+    "id": "CHANGE-2026-10-09-002",
+    "timestamp": "2026-10-09",
+    "component": "hosting_strategy",
+    "change": "Stopped treating Replit as the continuing deployment target.",
+    "why": "Publication encountered an Autoscale deployment limit and Replit credits were not an intended project dependency.",
+    "authority_ids": ["AUTH-RELIC-CANON-001"],
+    "evidence": ["ERRORS.md#err-2026-10-09-003---replit-was-an-unsuitable-continuity-host"],
+    "result": "source_truth_remains_github_and_hosting_is_separated_from_source",
+    "verification": "repository remains public and self-contained",
+    "supersedes": null
+  },
+  {
+    "id": "CHANGE-2026-10-09-003",
+    "timestamp": "2026-10-09",
+    "component": "relic_authority_core",
+    "change": "Added canon, error ledger, authority ledger, continuity references, RuneCore schema, and Neuron plan organization.",
+    "why": "Preserve the reasons behind changes and make authority/provenance first-class before expanding the hackathon implementation.",
+    "authority_ids": ["AUTH-RELIC-CANON-001", "AUTH-HUMAN-LAW-BOUNDARY-001"],
+    "evidence": ["RELIC_CANON.md", "ERRORS.md", "data/relic/authority.json"],
+    "result": "authority_and_continuity_scaffold",
+    "verification": "pending_ci",
+    "supersedes": null
+  }
+]
