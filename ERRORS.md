@@ -2,6 +2,8 @@
 
 Errors are retained as evidence. Do not erase an entry merely because the problem is fixed. Add the correction, verification, and relevant commit/reference.
 
+Every error record must preserve temporal continuity. Record both **when the event actually occurred** (`occurred_at`) and **when ReLiC Share learned/recorded it** (`recorded_at`). If either is unknown, write `UNKNOWN`; never substitute the current timestamp for an unknown historical time. Corrections may be backdated in valid time, but their later recorded time must remain visible.
+
 ## ERR-2026-10-09-001 — Test import path failed in CI
 
 - **Observed:** GitHub CI could not resolve the Python `app` package during pytest collection.
@@ -29,10 +31,14 @@ Errors are retained as evidence. Do not erase an entry merely because the proble
 
 ```text
 ## ERR-YYYY-MM-DD-NNN — Short title
+- occurred_at: ISO-8601 timestamp/date or UNKNOWN
+- recorded_at: ISO-8601 timestamp/date
+- discovered_at: ISO-8601 timestamp/date or UNKNOWN
 - Observed:
 - Impact:
 - Cause: UNKNOWN until supported by evidence
 - Correction:
+- correction_effective_from: ISO-8601 timestamp/date or N/A
 - Verification:
 - Related authority/decision:
 - Known-working reference:
