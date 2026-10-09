@@ -1,0 +1,59 @@
+[
+  {
+    "id": "NEURON-AUTHORITY",
+    "kind": "plan",
+    "title": "Authority resolution",
+    "status": "active_scaffold",
+    "depends_on": ["AUTH-RELIC-CANON-001", "AUTH-HUMAN-LAW-BOUNDARY-001"],
+    "goal": "Resolve applicable authority records without converting plans or model outputs into authority.",
+    "next": [
+      "validate authority record schema",
+      "implement temporal and correction relationships",
+      "surface unresolved authority conflicts for human review"
+    ]
+  },
+  {
+    "id": "NEURON-CONTINUITY",
+    "kind": "plan",
+    "title": "Change and recovery continuity",
+    "status": "active_scaffold",
+    "depends_on": ["data/relic/change_history.json", "data/relic/working_references.json", "ERRORS.md"],
+    "goal": "Preserve why a change happened and maintain evidence of known-working states.",
+    "next": [
+      "automate decision/change record validation",
+      "link failures to corrections and working references",
+      "prevent silent deletion of superseded evidence"
+    ]
+  },
+  {
+    "id": "NEURON-RUNECORE",
+    "kind": "plan",
+    "title": "RuneCore structured meaning",
+    "status": "active_scaffold",
+    "depends_on": ["RELIC_CANON.md"],
+    "goal": "Represent evidence, authority, intent, relationships, and execution boundaries in a stable structure without inventing authority.",
+    "next": [
+      "implement RuneCore validation models",
+      "map demo policy records into runes",
+      "build deterministic authority trace before model inference"
+    ]
+  },
+  {
+    "id": "NEURON-AMD",
+    "kind": "plan",
+    "title": "AMD inference integration",
+    "status": "blocked_until_event_endpoint",
+    "depends_on": ["NEURON-RUNECORE"],
+    "goal": "Run the demonstrated model inference on verified AMD infrastructure while preserving ReLiC evidence context.",
+    "next": ["configure event endpoint", "verify AMD execution", "record verification evidence"]
+  },
+  {
+    "id": "NEURON-EVOLUS",
+    "kind": "plan",
+    "title": "Evolus workflow integration",
+    "status": "blocked_until_event_workspace",
+    "depends_on": ["NEURON-AUTHORITY", "NEURON-RUNECORE"],
+    "goal": "Execute or escalate business workflows using verified Evolus building blocks without letting workflow state overwrite authority history.",
+    "next": ["connect official workspace", "select at least two required building blocks", "record verified API interactions"]
+  }
+]
