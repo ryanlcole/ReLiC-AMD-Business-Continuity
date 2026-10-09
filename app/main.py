@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 from fastapi import FastAPI
+from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
 from app.inference import amd_configured
@@ -10,10 +11,11 @@ from app.relic import evaluate_case
 
 ROOT = Path(__file__).resolve().parents[1]
 POLICY_PATH = ROOT / "data" / "demo-company" / "policies.json"
+DEMO_PATH = ROOT / "app" / "static" / "index.html"
 
 app = FastAPI(
     title="ReLiC AMD Business Continuity",
-    version="0.1.0",
+    version="0.2.0",
     description="Provenance-aware business decision continuity prototype.",
 )
 
@@ -25,7 +27,12 @@ class RefundCase(BaseModel):
 
 
 @app.get("/")
-def root() -> dict:
+def root() -> FileResponse:
+    return FileResponse(DEMO_PATH)
+
+
+@app.get("/status")
+def status() -> dict:
     return {
         "product": "ReLiC AMD Business Continuity",
         "status": "hackathon-mvp",
