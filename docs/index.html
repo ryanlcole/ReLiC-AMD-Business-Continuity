@@ -1,119 +1,71 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#101114">
-<title>ReLiC Business Continuity</title>
-<style>
-:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color-scheme:dark}
-*{box-sizing:border-box}
-body{margin:0;background:#101114;color:#f4f4f5}
-.wrap{max-width:980px;margin:auto;padding:28px 18px 56px}
-header{display:flex;gap:16px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;margin-bottom:22px}
-h1{font-size:clamp(2rem,6vw,4rem);line-height:.95;margin:.2rem 0 .7rem}
-.sub{max-width:720px;color:#b9bbc3;line-height:1.55}
-.badges{display:flex;gap:8px;flex-wrap:wrap}
-.badge{border:1px solid #3b3d45;border-radius:999px;padding:7px 10px;font-size:.78rem;color:#d6d7dc}
-.badge.ok{border-color:#39745a}.badge.warn{border-color:#846f34}
-.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
-.card{background:#18191d;border:1px solid #292b31;border-radius:18px;padding:20px;box-shadow:0 12px 40px #0004}
-label{display:block;margin:14px 0 6px;color:#d8d9de}
-input,select,button{width:100%;font:inherit;border-radius:10px;border:1px solid #41434b;padding:11px 12px;background:#101114;color:#fff}
-.check{display:flex;gap:9px;align-items:center}.check input{width:auto}.check label{margin:0}
-button{margin-top:18px;background:#f1f1f3;color:#101114;font-weight:750;cursor:pointer}
-button:hover{filter:brightness(.92)}
-.result{font-size:1.35rem;font-weight:800;margin:.2rem 0 .7rem}
-.reason{color:#c8c9cf;line-height:1.5}
-.timeline{display:grid;gap:11px;margin-top:16px}
-.item{border-left:3px solid #555;padding:10px 12px;background:#121317;border-radius:0 10px 10px 0}
-.item strong{display:block;margin-bottom:4px}.meta{color:#94969f;font-size:.82rem}.text{margin-top:5px;line-height:1.4}
-.item.used{border-left-color:#63b78a}
-.item.correction{border-left-color:#e0b65c}
-.small{font-size:.82rem;color:#9699a2;line-height:1.5}
-footer{margin-top:20px;color:#838690;font-size:.82rem}
-@media(max-width:760px){.grid{grid-template-columns:1fr}}
-</style>
-</head>
-<body>
-<div class="wrap">
-<header>
-<div>
-<div class="badges">
-<span class="badge ok">STATIC REFERENCE DEMO</span>
-<span class="badge warn">AMD NOT YET VERIFIED</span>
-</div>
-<h1>ReLiC<br>Business Continuity</h1>
-<p class="sub">A provenance-aware decision demo. ReLiC keeps the policy, later exception, and correction visible instead of silently replacing history with the newest sentence.</p>
-</div>
-</header>
-<div class="grid">
-<section class="card">
-<h2>Evaluate a refund</h2>
-<form id="caseForm">
-<label for="amount">Refund amount</label>
-<input id="amount" type="number" min="0.01" step="0.01" value="750" required>
-<label for="tier">Customer tier</label>
-<select id="tier">
-<option>Enterprise Standard</option>
-<option>Enterprise Plus</option>
-<option>Standard</option>
-</select>
-<div class="check" style="margin-top:16px">
-<input id="active" type="checkbox">
-<label for="active">Enterprise Plus contract is active</label>
-</div>
-<button type="submit">Evaluate with ReLiC</button>
-</form>
-<p class="small">This page runs the deterministic reference resolver entirely in your browser, so it needs no paid host or API key. It does not claim AMD inference.</p>
-</section>
-<section class="card">
-<h2>Decision</h2>
-<div id="decision" class="result">Waiting for a case</div>
-<div id="reason" class="reason">Submit the form to reconstruct the applicable evidence chain.</div>
-<div id="evidenceIds" class="small" style="margin-top:14px"></div>
-</section>
-</div>
-<section class="card" style="margin-top:18px">
-<h2>Evidence chain</h2>
-<div id="timeline" class="timeline"></div>
-</section>
-<footer>ReLiC principle: evidence, interpretation, and output are separate objects. AMD/vLLM and Evolus remain planned until they are actually connected and verified.</footer>
-</div>
-<script>
-const policies=[
-{id:"POL-2026-01",date:"2026-01-01",kind:"Policy",text:"Refunds over $500 require manager approval."},
-{id:"EXC-2026-03",date:"2026-03-01",kind:"Exception",text:"Enterprise Plus customers may receive refunds up to $1,000 without manager approval."},
-{id:"COR-2026-04",date:"2026-04-01",kind:"Correction",corrects:"EXC-2026-03",text:"The Enterprise Plus exception applies only while the customer's Enterprise Plus contract is active."}
-];
-function evaluate(amount,tier,active){
- if(amount<=500)return{action:"AUTO APPROVE",reason:"The refund does not exceed the $500 base-policy threshold.",ids:["POL-2026-01"]};
- const plus=tier.trim().toLowerCase()==="enterprise plus"&&active;
- if(plus&&amount<=1000)return{action:"AUTO APPROVE",reason:"The March Enterprise Plus exception applies, and the April correction confirms the contract is active.",ids:policies.map(p=>p.id)};
- return{action:"MANAGER APPROVAL",reason:"The refund exceeds the $500 base threshold and the corrected active Enterprise Plus exception does not apply.",ids:policies.map(p=>p.id)};
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0d1014"><title>ReLiC Share — Duties & Proof</title>
+<style>:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#0d1014;color:#f4f5f7}.wrap{max-width:1100px;margin:auto;padding:28px 18px 64px}h1{font-size:clamp(2.6rem,8vw,5.5rem);line-height:.88;margin:16px 0}h2{margin-top:0}.sub,.muted{color:#9da4af;line-height:1.6}.sub{max-width:850px}.badges{display:flex;gap:8px;flex-wrap:wrap}.badge{border:1px solid #3a414c;border-radius:999px;padding:7px 10px;font-size:.76rem}.ok{border-color:#3e8062;color:#a7e3c3}.warn{border-color:#8a7438;color:#ead18a}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:18px}.card{background:#15191f;border:1px solid #282f39;border-radius:18px;padding:20px}.law{font-size:1.15rem;font-weight:750;line-height:1.5}.flow,code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}.flow{line-height:1.7;color:#cbd1da}.proof{display:grid;gap:10px}.row{border-left:3px solid #56b681;background:#101419;padding:11px 13px;border-radius:0 10px 10px 0}.row.human{border-left-color:#e2b85f}.row strong{display:block}.meta{font-size:.8rem;color:#8f98a5;margin-top:3px}.duty{margin:12px 0;padding-bottom:12px;border-bottom:1px solid #292f38}.duty:last-child{border:0;padding:0}.retention{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}.stage{background:#101419;border:1px solid #2b323c;border-radius:12px;padding:12px;font-size:.88rem}.stage b{display:block;margin-bottom:6px}.drill{margin-top:10px;border:1px solid #303844;border-radius:12px;overflow:hidden}.drill summary{cursor:pointer;padding:13px 15px;background:#11161c;font-weight:750;list-style:none}.drill summary::-webkit-details-marker{display:none}.drill summary:before{content:'＋ ';color:#7fd3a5}.drill[open] summary:before{content:'− '}.inside{padding:14px 16px;border-top:1px solid #303844}.note{border-left:3px solid #5c83b8;padding-left:12px;margin:12px 0;color:#bdc6d2}.code{background:#090c10;border:1px solid #272e38;border-radius:10px;padding:13px;overflow:auto;white-space:pre-wrap;font-size:.82rem;line-height:1.55}.tag{font-size:.7rem;border:1px solid #46515e;border-radius:99px;padding:3px 7px;margin-left:6px;color:#aeb8c5}.footer{margin-top:20px;color:#818a96;font-size:.82rem}@media(max-width:760px){.grid{grid-template-columns:1fr}.retention{grid-template-columns:1fr}}</style></head>
+<body><main class="wrap"><div class="badges"><span class="badge ok">RELiC SHARE</span><span class="badge ok">TEMPORAL CONTINUITY</span><span class="badge warn">OBSERVER — NO EXECUTION</span></div><h1>Remember.<br>Explain. Prove.</h1><p class="sub">ReLiC preserves why a state exists, what authority governed it, what changed later, and which records are affected. Every proof below can be opened to inspect the rule, record shape, reasoning, and execution boundary.</p>
+<div class="grid"><section class="card"><h2>My duties</h2><div class="duty"><b>1 · Preserve authority</b><div class="muted">Keep originals. Amendments change authority, not history.</div></div><div class="duty"><b>2 · Keep time separate</b><div class="muted">Event, knowledge, correction, retirement, and current time remain distinguishable.</div></div><div class="duty"><b>3 · Reveal affected records</b><div class="muted">Return candidates plus reasons and provenance.</div></div><div class="duty"><b>4 · Preserve uncertainty</b><div class="muted">Unknown grandfathering becomes HUMAN AUDIT REQUIRED.</div></div><div class="duty"><b>5 · Never execute</b><div class="muted">ReLiC observes and explains. AI/humans execute authorized mutations.</div></div></section><section class="card"><h2>Authority lifecycle</h2><div class="flow">RECEIVED → VERIFIED → ACTIVE<br>→ AMENDED / RETIRED<br>→ retention clock<br>→ SOURCE PRESERVED + MACHINERY DROPPED</div><p class="muted">Existence is permanent; authority is temporal.</p></section></div>
+<section class="card" style="margin-top:18px"><h2>Drill into the proof</h2><p class="muted">These are deliberately readable implementation notes. Open any layer to see what ReLiC stores and why.</p>
+<details class="drill"><summary>1. Document holding area <span class="tag">EVIDENCE</span></summary><div class="inside"><p>The source first enters a holding state. Reading a document does not promote it to canon.</p><div class="note"><b>Why:</b> drafts, superseded orders, bad scans, forged documents, or AI extraction errors must not silently become authority.</div><pre class="code">document = {
+  "id": "ORDER-2026-02",
+  "state": "HOLDING",
+  "source_preserved": true,
+  "verified_authority": false,
+  "extracted": {
+    "issued": "2026-10-09",
+    "effective": "2026-10-15",
+    "backpay_from": "2026-07-01"
+  }
 }
-function renderTimeline(used=[]){
- const root=document.getElementById("timeline");
- root.innerHTML="";
- policies.forEach(p=>{
-  const el=document.createElement("div");
-  el.className="item "+(used.includes(p.id)?"used ":"")+(p.kind==="Correction"?"correction":"");
-  el.innerHTML="<strong>"+p.id+" — "+p.kind+"</strong><div class='meta'>Effective "+p.date+(p.corrects?" · corrects "+p.corrects:"")+"</div><div class='text'>"+p.text+"</div>";
-  root.appendChild(el);
- });
+# NOTE: extraction is a claim about the document, not permission to mutate payroll.</pre></div></details>
+<details class="drill"><summary>2. Amendment chain <span class="tag">TEMPORAL</span></summary><div class="inside"><p>New authority links to old authority. It does not overwrite it.</p><pre class="code">ORDER-2026-01  status: RETIRED (in amended scope)
+ORDER-2026-02  status: ACTIVE
+ORDER-2026-02 --[AMENDS]--> ORDER-2026-01
+
+# NOTE: retirement date starts retention.
+# NOTE: unchanged provisions may remain active.
+# NOTE: original ORDER-2026-01 remains recoverable.</pre></div></details>
+<details class="drill"><summary>3. Affected-record resolver <span class="tag">PROOF OF WORK</span></summary><div class="inside"><p>ReLiC intersects scope and valid time, then returns explanations instead of updates.</p><pre class="code">def reveal_affected(order, records):
+    affected = []
+    for record in records:
+        in_time = record.event_date >= order.backpay_from
+        in_scope = record.classification in order.classifications
+        if in_time and in_scope:
+            affected.append({
+                "record_id": record.id,
+                "authority": order.id,
+                "reason": "event date + classification intersect authority",
+                "action": "REVIEW_REQUIRED"
+            })
+    return affected
+
+# There is intentionally NO update(), delete(), pay(), or write-back here.</pre><div class="note"><b>Boundary:</b> ReLiC may reveal 14,283 affected records. That does not mean 14,283 records have been changed.</div></div></details>
+<details class="drill"><summary>4. Historical payment + correction <span class="tag">NO REWRITE</span></summary><div class="inside"><pre class="code">historical_fact = {"paid": 100.00, "event_date": "2026-08-01"}
+later_authority = {"correct_rate": 120.00, "known_on": "2026-10-09"}
+proposed_consequence = {"difference": 20.00, "state": "CANDIDATE"}
+
+# WRONG: historical_fact["paid"] = 120.00
+# RIGHT: preserve $100 fact + record $20 proposed consequence.</pre><p class="muted">The correction adds knowledge. It does not manufacture a different past.</p></div></details>
+<details class="drill"><summary>5. Retention and context collapse <span class="tag">DECAY</span></summary><div class="inside"><pre class="code">retention_start = authority.retired_on   # NOT authority.created_on
+expiry = retention_start + applicable_schedule.period
+
+if now >= expiry and disposition_is_authorized:
+    preserve(authority.original_source)
+    preserve(authority.provenance)
+    drop(authority.obsolete_programming)
+    convert_bound_fields_to_context()
+
+# Source permanence != representation permanence.</pre><div class="note"><b>Clear note:</b> disposition eligibility is not permission to destroy. Execution remains outside ReLiC.</div></div></details>
+<details class="drill"><summary>6. Retention schedule changed after retirement <span class="tag">HUMAN GATE</span></summary><div class="inside"><pre class="code">record.retired_on = "2019-01-01"
+old_schedule.period = "7 years"
+new_schedule.period = "6 years"   # effective later
+new_schedule.retroactivity = UNKNOWN
+
+result = {
+  "state": "HUMAN_AUDIT_REQUIRED",
+  "question": "Are already-retired records grandfathered?",
+  "mutation_allowed": false
 }
-renderTimeline();
-document.getElementById("caseForm").addEventListener("submit",e=>{
- e.preventDefault();
- const amount=Number(document.getElementById("amount").value);
- const tier=document.getElementById("tier").value;
- const active=document.getElementById("active").checked;
- const r=evaluate(amount,tier,active);
- document.getElementById("decision").textContent=r.action;
- document.getElementById("reason").textContent=r.reason;
- document.getElementById("evidenceIds").textContent="Evidence: "+r.ids.join(" → ")+" · Mode: deterministic browser reference";
- renderTimeline(r.ids);
-});
-</script>
-</body>
-</html>
+
+# UNKNOWN is preserved. ReLiC does not guess retroactivity.</pre></div></details>
+</section>
+<section class="card" style="margin-top:18px"><h2>Proof of work · expected output</h2><div class="proof"><div class="row"><strong>Original authority preserved</strong><div class="meta">Source survives amendment and retirement.</div></div><div class="row"><strong>Temporal chain exposed</strong><div class="meta">Effective, known, corrected, and retired dates remain independently inspectable.</div></div><div class="row"><strong>Affected records revealed</strong><div class="meta">Every candidate carries authority + selection reason.</div></div><div class="row human"><strong>Human boundary preserved</strong><div class="meta">Ambiguous grandfathering stops at HUMAN AUDIT REQUIRED.</div></div></div></section>
+<section class="card" style="margin-top:18px"><h2>What ReLiC returns</h2><p class="law">“These records appear affected. Here is the authority, effective date, knowledge date, amendment chain, retention state, and reason each record was selected. I have changed nothing.”</p></section><div class="footer">ReLiC Share · drillable reference proof · deterministic demonstration; external AI/AMD execution is not claimed until verified.</div></main></body></html>
