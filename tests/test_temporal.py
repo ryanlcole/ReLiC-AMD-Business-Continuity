@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, datetime
 
 from app.relic.temporal import RatePeriod, WorkRecord, applicable_rate, current_rate, reconcile_history
 
@@ -25,6 +25,17 @@ def test_backdated_correction_reconciles_without_rewriting_work():
     assert result.correct_amount == "176.00"
     assert result.delta == "16.00"
     assert result.authority_id == "auth-c"
+
+
+def test_relic_can_reconstruct_what_was_known_then_and_what_is_known_now():
+    records = rates() + [
+        RatePeriod("r3", "worker-1", "22.00", "2026-02-01", "2026-02-28", "2026-10-09T20:08:00+00:00", "correction-c", "auth-c")
+    ]
+    before_correction_was_known = datetime.fromisoformat("2026-02-10T23:00:00+00:00")
+    historical_view = applicable_rate(records, "worker-1", date(2026, 2, 10), known_at=before_correction_was_known)
+    current_view_of_same_day = applicable_rate(records, "worker-1", date(2026, 2, 10))
+    assert historical_view.amount == "20.00"
+    assert current_view_of_same_day.amount == "22.00"
 
 
 def test_superseded_record_is_not_current_authority():
