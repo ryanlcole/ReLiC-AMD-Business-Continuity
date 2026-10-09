@@ -1,0 +1,23 @@
+[
+  {
+    "id": "WORKING-2026-10-09-MVP",
+    "kind": "working_reference",
+    "git_commit": "43d5fc2fa4bfda0b5770e8fef382d751c0a21679",
+    "branch_at_recording": "main",
+    "recorded_date": "2026-10-09",
+    "scope": "ReLiC Business Continuity hackathon MVP before authority-core construction",
+    "known": [
+      "deterministic policy resolver present",
+      "FastAPI application import verified by CI",
+      "regression tests verified by CI",
+      "static reference demo present under docs/"
+    ],
+    "not_claimed": [
+      "AMD-backed inference",
+      "Evolus integration",
+      "general legal reasoning",
+      "production deployment"
+    ],
+    "purpose": "Recovery/comparison reference. This record is evidence of a known-working project state, not a command to roll back newer verified work."
+  }
+]
