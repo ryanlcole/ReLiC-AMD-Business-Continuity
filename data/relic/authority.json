@@ -1,0 +1,34 @@
+[
+  {
+    "id": "AUTH-RELIC-CANON-001",
+    "record_type": "canon",
+    "title": "ReLiC Authority & Continuity Canon",
+    "source": "RELIC_CANON.md",
+    "issuer": "project_owner",
+    "scope": "repository",
+    "effective_date": "2026-10-09",
+    "status": "active",
+    "principles": [
+      "representation_is_not_truth",
+      "identity_is_not_output_equivalence",
+      "corrections_remain_evidence",
+      "errors_are_durable_lessons",
+      "known_working_code_is_evidence",
+      "why_must_survive_what",
+      "neurons_organize_not_legislate",
+      "runecore_structures_meaning_not_authority",
+      "relic_preserves_provenance"
+    ]
+  },
+  {
+    "id": "AUTH-HUMAN-LAW-BOUNDARY-001",
+    "record_type": "human_law",
+    "title": "Applicable human law boundary",
+    "source": "RELIC_CANON.md#human-law-boundary",
+    "issuer": "project_owner",
+    "scope": "all_ai_and_project_actions",
+    "effective_date": "2026-10-09",
+    "status": "boundary",
+    "statement": "Internal AI/project authority cannot authorize violation of applicable human law; legal applicability still requires valid provenance and appropriate human interpretation."
+  }
+]
