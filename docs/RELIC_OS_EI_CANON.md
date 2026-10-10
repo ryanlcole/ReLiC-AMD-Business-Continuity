@@ -1,6 +1,6 @@
-# ReLiC OS — Environmental Intelligence continuity record
+# ReLiC OS — Environmental Intelligence historical record
 
-Status: historical proof record imported for ReLiC Share. This document does not claim that every historical prototype component is present in this repository or currently deployed.
+Status: **historical project record** imported for ReLiC Share. The statements below record prior ReLiC/Shaelvien OS work. This hackathon repository does **not** contain the cited EFI binaries/source and therefore does not independently prove those historical implementation claims.
 
 ## ReLiC is whole
 
@@ -12,30 +12,30 @@ ReLiC is not merely an observer, logger, boot monitor, authority resolver, AI ga
 
 - **Remember** preserves errors, canon, laws/authority, success, backups, provenance, and reasons.
 - **Exist** maintains the continual reference that dependent actions must resolve before proceeding.
-- **Live** observes the current environment, including authorized system performance and hardware-health evidence.
+- **Live** observes the current environment, including authorized system performance and hardware-health evidence when such telemetry is actually connected.
 - **Imagine** tests hypotheses/fiction against evidence without calling fiction truth.
 - **Create** constructs the traceable report/context that humans, AI, and authorized connectors can follow.
 - **Share** exposes ReLiC's inner workings for review. For this hackathon, AMD is the intended reviewer.
 
 Share is a window into ReLiC; it is not ReLiC itself.
 
-## Environmental Intelligence execution relationship
+## Recorded historical architecture
 
-Established flow:
+The imported historical record describes this flow:
 
 `External Signal -> WaveCore -> State -> ReLiC -> Log / Context / Representation`
 
-Historical architectural form:
+It also describes this architectural form:
 
 `EFI -> Root Contract -> World Container -> Envelope -> Sealed Core -> Runtime Selection -> WaveCore -> ReLiC -> Glyph`
 
-Execution and Environmental Intelligence remain distinguishable. WaveCore/Fysics represents the authoritative execution side in the historical architecture; ReLiC surrounds that environment with continuity, authority, observation, hypothesis testing, reporting, and proof without silently acquiring mutation authority.
+Within that historical record, WaveCore/Fysics represents the execution side and ReLiC the Environmental Intelligence/continuity side. This repository does not independently verify that historical architecture on hardware.
 
-## EFI / boot canon
+## Recorded EFI / boot design
 
-Historical ReLiC OS work treated EFI/UEFI as the root boundary for trust, naming, validation, identity, and lineage during boot. The root contract was intended to provide a stable validation/identity interface before higher runtime representations were trusted.
+The historical record describes EFI/UEFI as the root boundary for trust, naming, validation, identity, and lineage during boot, with a root contract intended to provide a validation/identity interface before higher runtime representations were trusted.
 
-Safeguards carried through the work:
+The recorded safeguards are:
 
 - Identity is not output equivalence.
 - Representation is not truth.
@@ -45,62 +45,57 @@ Safeguards carried through the work:
 - Hypothesis/fiction must be tested before it can be treated as supported truth.
 - A created report is representation; execution remains separately authorized.
 
-The boot proof loop was expressed as:
+Recorded boot/development sequences:
 
 `BOOT -> LOCATE -> VALIDATE -> LAUNCH -> DISPLAY / VERIFY INVARIANTS`
 
-The broader development pipeline was:
-
 `BOOTSTRAP -> RUN -> VERIFY -> BUILD`
 
-Historical variants also used an explicit validation step before verification/package. These variants are preserved as historical evolution rather than flattened into one false timeless sequence.
+## Historical component names recorded
 
-## Historical EFI components
-
-Prior ReLiC/Shaelvien EFI work included named components such as:
+The imported record names:
 
 - `FirstRune.efi`
 - `WaveCore.efi`
 - `ControlRoom.efi`
 - `ShaelvienFront.efi`
-- later boot/handoff work referenced `RuneBridge.efi`, `ShaelvienLauncher.efi`, and `ShaelvienStage2.efi`
+- `RuneBridge.efi`
+- `ShaelvienLauncher.efi`
+- `ShaelvienStage2.efi`
 
-These names are retained here as historical evidence. Their presence here does not claim that their binaries or source files have been copied into this hackathon repository.
+The historical record also states prior work involved UEFI image loading/handoff concepts (`LoadImage` / `StartImage`), GOP framebuffer/display, boot priority and Windows Boot Manager interactions, Secure Boot constraints, `BOOTX64.EFI`, EFI memory maps, and `ExitBootServices` handoff behavior.
 
-Observed/implemented boot work included UEFI image loading/handoff concepts (`LoadImage` / `StartImage`), GOP framebuffer/display work, boot priority and Windows Boot Manager interactions, Secure Boot constraints, `BOOTX64.EFI`, EFI memory maps, and `ExitBootServices` handoff behavior.
+**Repository proof boundary:** those binaries/source files and hardware verification artifacts are not present in this hackathon repository. These statements are therefore historical claims recorded by the project, not independently demonstrated facts of this repository.
 
-## Live — environmental performance and health
+## Environmental-state categories
 
-The OS work used the boot/runtime boundary to expose environmental state for performance, balance, validation, and diagnosis. ReLiC keeps these categories separate:
+The project record separates:
 
-- **CURRENT ENVIRONMENT** — what can be established now.
-- **HISTORICAL ENVIRONMENT** — what was observed before.
-- **KNOWN-WORKING REFERENCE / SUCCESS** — a state previously verified to work.
-- **KNOWN ERROR** — a failure that must remain visible as regression evidence.
-- **PROPOSAL / HYPOTHESIS** — an AI/human recommendation or imagined state, not authority or truth.
-- **TEST / RESULT** — evidence produced by testing the hypothesis.
-- **EXECUTION** — separately authorized and verified mutation of the environment.
+- **CURRENT ENVIRONMENT** — what is established now.
+- **HISTORICAL ENVIRONMENT** — what was recorded before.
+- **KNOWN-WORKING REFERENCE / SUCCESS** — a state for which verification evidence exists.
+- **KNOWN ERROR** — a retained failure record.
+- **PROPOSAL / HYPOTHESIS** — a recommendation or imagined state, not authority or truth.
+- **TEST / RESULT** — evidence produced by a test.
+- **EXECUTION** — separately authorized mutation of the environment.
 
-This separation is the processor-safety bridge demonstrated by ReLiC Share: history remains useful without becoming stale control state.
+## AMD integration status
 
-## AMD-relevant invariant
+AMD processor/accelerator telemetry, hardware-health monitoring, processor tuning, and silicon-level error prevention are **not verified by this repository**. The current repository contains AMD/vLLM connector code, but its own source states that endpoint configuration does not prove AMD backing.
 
-A processor/accelerator environment may accumulate prior settings, successful profiles, failed profiles, telemetry, model recommendations, firmware state, and current workload observations. ReLiC EI requires those records to retain identity and time.
+The proposed processor-continuity test is:
 
-A previous successful configuration is not automatically valid for a new environmental state.
+`REMEMBER history/errors/success -> EXIST resolve reference -> LIVE observe current state -> IMAGINE candidate -> test/verify -> CREATE traceable result -> SHARE -> REMEMBER new evidence`
 
-Conceptual path through ReLiC:
+This is a proposed application of the ReLiC lifecycle until AMD hardware/telemetry interfaces are actually connected and verification evidence is recorded.
 
-`REMEMBER history/errors/success -> EXIST resolve reference -> LIVE observe current state -> IMAGINE candidate -> test/verify -> CREATE traceable result -> SHARE proof -> REMEMBER new evidence`
+## Evidence labels required by Share
 
-A plausible historical match is not promoted into current truth merely because the output looks equivalent.
+- **REPOSITORY FACT** — directly inspectable in this repository.
+- **PROJECT CANON** — governing project rule; canon status does not itself prove an external-world claim.
+- **RECORDED HISTORY** — historical statement retained by the project but not independently proved by this repository.
+- **VERIFIED RESULT** — result with identified verification evidence.
+- **PROPOSAL / HYPOTHESIS** — not yet established as fact.
+- **UNKNOWN** — evidence is insufficient; do not infer a fact.
 
-## Proof status
-
-This hackathon repository demonstrates business/authority continuity directly and preserves the earlier machine/boot work as a historical proof record. It must distinguish:
-
-- **PROVEN HERE** — code/data a judge can inspect in this repository.
-- **HISTORICAL PROOF RECORD** — prior implementation/observation retained with explicit status.
-- **PROPOSAL / NEXT TEST** — AMD processor integration or hardware-specific validation not yet performed here.
-
-ReLiC must not claim AMD hardware execution, silicon-level error prevention, current EFI deployment, hardware-health monitoring, or processor tuning until independently configured and verified.
+ReLiC Share must not upgrade one label into another without new evidence.
