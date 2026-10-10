@@ -2,11 +2,24 @@
 
 Status: historical proof record imported for ReLiC Share. This document does not claim that every historical prototype component is present in this repository or currently deployed.
 
-## Definition
+## ReLiC is whole
+
+ReLiC is not merely an observer, logger, boot monitor, authority resolver, AI gate, or report generator. Those are duties inside the whole ReLiC lifecycle:
+
+`REMEMBER -> EXIST -> LIVE -> IMAGINE -> CREATE -> SHARE -> REMEMBER`
 
 **EI = Environmental Intelligence.**
 
-ReLiC is observer/continuity infrastructure. Its role is to observe authoritative environmental state, preserve provenance and history, expose errors and changes, and construct context without silently becoming the authority that mutates the environment.
+- **Remember** preserves errors, canon, laws/authority, success, backups, provenance, and reasons.
+- **Exist** maintains the continual reference that dependent actions must resolve before proceeding.
+- **Live** observes the current environment, including authorized system performance and hardware-health evidence.
+- **Imagine** tests hypotheses/fiction against evidence without calling fiction truth.
+- **Create** constructs the traceable report/context that humans, AI, and authorized connectors can follow.
+- **Share** exposes ReLiC's inner workings for review. For this hackathon, AMD is the intended reviewer.
+
+Share is a window into ReLiC; it is not ReLiC itself.
+
+## Environmental Intelligence execution relationship
 
 Established flow:
 
@@ -16,7 +29,7 @@ Historical architectural form:
 
 `EFI -> Root Contract -> World Container -> Envelope -> Sealed Core -> Runtime Selection -> WaveCore -> ReLiC -> Glyph`
 
-The execution and observation roles remain separate. WaveCore/Fysics is the authoritative execution side; ReLiC observes state and continuity.
+Execution and Environmental Intelligence remain distinguishable. WaveCore/Fysics represents the authoritative execution side in the historical architecture; ReLiC surrounds that environment with continuity, authority, observation, hypothesis testing, reporting, and proof without silently acquiring mutation authority.
 
 ## EFI / boot canon
 
@@ -27,9 +40,10 @@ Safeguards carried through the work:
 - Identity is not output equivalence.
 - Representation is not truth.
 - Errors become durable lessons.
-- ReLiC is observer only.
 - A known-working state is evidence, not automatic current authority.
 - Historical state must not silently overwrite current environmental state.
+- Hypothesis/fiction must be tested before it can be treated as supported truth.
+- A created report is representation; execution remains separately authorized.
 
 The boot proof loop was expressed as:
 
@@ -55,39 +69,38 @@ These names are retained here as historical evidence. Their presence here does n
 
 Observed/implemented boot work included UEFI image loading/handoff concepts (`LoadImage` / `StartImage`), GOP framebuffer/display work, boot priority and Windows Boot Manager interactions, Secure Boot constraints, `BOOTX64.EFI`, EFI memory maps, and `ExitBootServices` handoff behavior.
 
-## Environmental Intelligence dashboard purpose
+## Live — environmental performance and health
 
-The OS work used the boot/runtime boundary to expose environmental state for performance, balance, validation, and diagnosis. ReLiC's value is not to make a previous configuration authoritative simply because it once worked. It keeps these categories separate:
+The OS work used the boot/runtime boundary to expose environmental state for performance, balance, validation, and diagnosis. ReLiC keeps these categories separate:
 
 - **CURRENT ENVIRONMENT** — what can be established now.
 - **HISTORICAL ENVIRONMENT** — what was observed before.
-- **KNOWN-WORKING REFERENCE** — a state previously verified to work.
+- **KNOWN-WORKING REFERENCE / SUCCESS** — a state previously verified to work.
 - **KNOWN ERROR** — a failure that must remain visible as regression evidence.
-- **PROPOSAL** — an AI/human recommendation, not authority.
+- **PROPOSAL / HYPOTHESIS** — an AI/human recommendation or imagined state, not authority or truth.
+- **TEST / RESULT** — evidence produced by testing the hypothesis.
 - **EXECUTION** — separately authorized and verified mutation of the environment.
 
 This separation is the processor-safety bridge demonstrated by ReLiC Share: history remains useful without becoming stale control state.
 
 ## AMD-relevant invariant
 
-A processor/accelerator tuning system may accumulate prior settings, successful profiles, failed profiles, telemetry, model recommendations, firmware state, and current workload observations. ReLiC EI requires those records to retain identity and time.
+A processor/accelerator environment may accumulate prior settings, successful profiles, failed profiles, telemetry, model recommendations, firmware state, and current workload observations. ReLiC EI requires those records to retain identity and time.
 
 A previous successful configuration is not automatically valid for a new environmental state.
 
-Conceptual decision path:
+Conceptual path through ReLiC:
 
-`CURRENT STATE -> establish identity -> retrieve relevant history -> compare without merging -> expose known errors/constraints -> candidate adjustment -> verify against CURRENT environment -> PASS / FAIL / UNKNOWN`
+`REMEMBER history/errors/success -> EXIST resolve reference -> LIVE observe current state -> IMAGINE candidate -> test/verify -> CREATE traceable result -> SHARE proof -> REMEMBER new evidence`
 
-`UNKNOWN` is preserved. A plausible historical match is not promoted into current truth merely because the output looks equivalent.
+A plausible historical match is not promoted into current truth merely because the output looks equivalent.
 
 ## Proof status
 
-This hackathon repository currently demonstrates the continuity law directly through the business/authority proof. This OS/EI record demonstrates that the same governing doctrine existed in the earlier machine/boot environment work.
+This hackathon repository demonstrates business/authority continuity directly and preserves the earlier machine/boot work as a historical proof record. It must distinguish:
 
-The page must therefore distinguish:
-
-- **PROVEN HERE** — code/data that a judge can inspect in this repository.
+- **PROVEN HERE** — code/data a judge can inspect in this repository.
 - **HISTORICAL PROOF RECORD** — prior implementation/observation retained with explicit status.
-- **PROPOSAL / NEXT TEST** — AMD processor integration or hardware-specific validation not yet performed in this repository.
+- **PROPOSAL / NEXT TEST** — AMD processor integration or hardware-specific validation not yet performed here.
 
-ReLiC must not claim AMD hardware execution, silicon-level error prevention, or current EFI deployment until independently verified.
+ReLiC must not claim AMD hardware execution, silicon-level error prevention, current EFI deployment, hardware-health monitoring, or processor tuning until independently configured and verified.
