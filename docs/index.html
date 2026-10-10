@@ -1,71 +1,47 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0d1014"><title>ReLiC Share — Duties & Proof</title>
-<style>:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#0d1014;color:#f4f5f7}.wrap{max-width:1100px;margin:auto;padding:28px 18px 64px}h1{font-size:clamp(2.6rem,8vw,5.5rem);line-height:.88;margin:16px 0}h2{margin-top:0}.sub,.muted{color:#9da4af;line-height:1.6}.sub{max-width:850px}.badges{display:flex;gap:8px;flex-wrap:wrap}.badge{border:1px solid #3a414c;border-radius:999px;padding:7px 10px;font-size:.76rem}.ok{border-color:#3e8062;color:#a7e3c3}.warn{border-color:#8a7438;color:#ead18a}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:18px}.card{background:#15191f;border:1px solid #282f39;border-radius:18px;padding:20px}.law{font-size:1.15rem;font-weight:750;line-height:1.5}.flow,code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}.flow{line-height:1.7;color:#cbd1da}.proof{display:grid;gap:10px}.row{border-left:3px solid #56b681;background:#101419;padding:11px 13px;border-radius:0 10px 10px 0}.row.human{border-left-color:#e2b85f}.row strong{display:block}.meta{font-size:.8rem;color:#8f98a5;margin-top:3px}.duty{margin:12px 0;padding-bottom:12px;border-bottom:1px solid #292f38}.duty:last-child{border:0;padding:0}.retention{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}.stage{background:#101419;border:1px solid #2b323c;border-radius:12px;padding:12px;font-size:.88rem}.stage b{display:block;margin-bottom:6px}.drill{margin-top:10px;border:1px solid #303844;border-radius:12px;overflow:hidden}.drill summary{cursor:pointer;padding:13px 15px;background:#11161c;font-weight:750;list-style:none}.drill summary::-webkit-details-marker{display:none}.drill summary:before{content:'＋ ';color:#7fd3a5}.drill[open] summary:before{content:'− '}.inside{padding:14px 16px;border-top:1px solid #303844}.note{border-left:3px solid #5c83b8;padding-left:12px;margin:12px 0;color:#bdc6d2}.code{background:#090c10;border:1px solid #272e38;border-radius:10px;padding:13px;overflow:auto;white-space:pre-wrap;font-size:.82rem;line-height:1.55}.tag{font-size:.7rem;border:1px solid #46515e;border-radius:99px;padding:3px 7px;margin-left:6px;color:#aeb8c5}.footer{margin-top:20px;color:#818a96;font-size:.82rem}@media(max-width:760px){.grid{grid-template-columns:1fr}.retention{grid-template-columns:1fr}}</style></head>
-<body><main class="wrap"><div class="badges"><span class="badge ok">RELiC SHARE</span><span class="badge ok">TEMPORAL CONTINUITY</span><span class="badge warn">OBSERVER — NO EXECUTION</span></div><h1>Remember.<br>Explain. Prove.</h1><p class="sub">ReLiC preserves why a state exists, what authority governed it, what changed later, and which records are affected. Every proof below can be opened to inspect the rule, record shape, reasoning, and execution boundary.</p>
-<div class="grid"><section class="card"><h2>My duties</h2><div class="duty"><b>1 · Preserve authority</b><div class="muted">Keep originals. Amendments change authority, not history.</div></div><div class="duty"><b>2 · Keep time separate</b><div class="muted">Event, knowledge, correction, retirement, and current time remain distinguishable.</div></div><div class="duty"><b>3 · Reveal affected records</b><div class="muted">Return candidates plus reasons and provenance.</div></div><div class="duty"><b>4 · Preserve uncertainty</b><div class="muted">Unknown grandfathering becomes HUMAN AUDIT REQUIRED.</div></div><div class="duty"><b>5 · Never execute</b><div class="muted">ReLiC observes and explains. AI/humans execute authorized mutations.</div></div></section><section class="card"><h2>Authority lifecycle</h2><div class="flow">RECEIVED → VERIFIED → ACTIVE<br>→ AMENDED / RETIRED<br>→ retention clock<br>→ SOURCE PRESERVED + MACHINERY DROPPED</div><p class="muted">Existence is permanent; authority is temporal.</p></section></div>
-<section class="card" style="margin-top:18px"><h2>Drill into the proof</h2><p class="muted">These are deliberately readable implementation notes. Open any layer to see what ReLiC stores and why.</p>
-<details class="drill"><summary>1. Document holding area <span class="tag">EVIDENCE</span></summary><div class="inside"><p>The source first enters a holding state. Reading a document does not promote it to canon.</p><div class="note"><b>Why:</b> drafts, superseded orders, bad scans, forged documents, or AI extraction errors must not silently become authority.</div><pre class="code">document = {
-  "id": "ORDER-2026-02",
-  "state": "HOLDING",
-  "source_preserved": true,
-  "verified_authority": false,
-  "extracted": {
-    "issued": "2026-10-09",
-    "effective": "2026-10-15",
-    "backpay_from": "2026-07-01"
-  }
-}
-# NOTE: extraction is a claim about the document, not permission to mutate payroll.</pre></div></details>
-<details class="drill"><summary>2. Amendment chain <span class="tag">TEMPORAL</span></summary><div class="inside"><p>New authority links to old authority. It does not overwrite it.</p><pre class="code">ORDER-2026-01  status: RETIRED (in amended scope)
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0d1014"><title>ReLiC Share — Duties, Canon & Proof</title>
+<style>:root{font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#0d1014;color:#f4f5f7}.wrap{max-width:1100px;margin:auto;padding:28px 18px 64px}h1{font-size:clamp(2.6rem,8vw,5.5rem);line-height:.88;margin:16px 0}h2{margin-top:0}.sub,.muted{color:#9da4af;line-height:1.6}.sub{max-width:850px}.badges{display:flex;gap:8px;flex-wrap:wrap}.badge{border:1px solid #3a414c;border-radius:999px;padding:7px 10px;font-size:.76rem}.ok{border-color:#3e8062;color:#a7e3c3}.warn{border-color:#8a7438;color:#ead18a}.fail{border-color:#9a4d4d;color:#f0a3a3}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:18px}.card{background:#15191f;border:1px solid #282f39;border-radius:18px;padding:20px}.law{font-size:1.15rem;font-weight:750;line-height:1.5}.flow,code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}.flow{line-height:1.7;color:#cbd1da}.duty{margin:12px 0;padding-bottom:12px;border-bottom:1px solid #292f38}.duty:last-child{border:0;padding:0}.drill{margin-top:10px;border:1px solid #303844;border-radius:12px;overflow:hidden}.drill summary{cursor:pointer;padding:13px 15px;background:#11161c;font-weight:750;list-style:none}.drill summary::-webkit-details-marker{display:none}.drill summary:before{content:'＋ ';color:#7fd3a5}.drill[open] summary:before{content:'− '}.inside{padding:14px 16px;border-top:1px solid #303844}.note{border-left:3px solid #5c83b8;padding-left:12px;margin:12px 0;color:#bdc6d2}.code{background:#090c10;border:1px solid #272e38;border-radius:10px;padding:13px;overflow:auto;white-space:pre-wrap;font-size:.82rem;line-height:1.55}.tag{font-size:.7rem;border:1px solid #46515e;border-radius:99px;padding:3px 7px;margin-left:6px;color:#aeb8c5}.source{display:inline-block;margin-top:8px;color:#a7e3c3}.footer{margin-top:20px;color:#818a96;font-size:.82rem}@media(max-width:760px){.grid{grid-template-columns:1fr}}</style></head>
+<body><main class="wrap"><div class="badges"><span class="badge ok">RELiC SHARE</span><span class="badge ok">TEMPORAL CONTINUITY</span><span class="badge ok">CANON SURROUNDS QUERY</span><span class="badge warn">OBSERVER — NO EXECUTION</span></div><h1>Remember.<br>Explain. Prove.</h1><p class="sub">ReLiC preserves why a state exists, what authority governed it, what changed later, and which records are affected. Share exposes the canon surrounding the proof instead of asking a reviewer to trust the output.</p>
+<div class="grid"><section class="card"><h2>My duties</h2><div class="duty"><b>1 · Preserve authority</b><div class="muted">Keep originals. Amendments change authority, not history.</div></div><div class="duty"><b>2 · Keep time separate</b><div class="muted">Event, knowledge, correction, retirement, and current time remain distinguishable.</div></div><div class="duty"><b>3 · Reveal affected records</b><div class="muted">Return candidates plus reasons and provenance.</div></div><div class="duty"><b>4 · Preserve uncertainty</b><div class="muted">Unknown applicability or grandfathering remains unresolved for authorized review.</div></div><div class="duty"><b>5 · Never silently execute</b><div class="muted">ReLiC observes, traces and explains. Execution is separately authorized and verified.</div></div></section><section class="card"><h2>Authority lifecycle</h2><div class="flow">RECEIVED → VERIFIED → ACTIVE<br>→ AMENDED / RETIRED<br>→ retention clock<br>→ SOURCE PRESERVED + MACHINERY DROPPED</div><p class="muted">Existence is permanent; authority is temporal.</p></section></div>
+<section class="card" style="margin-top:18px"><h2>Canon governing this proof</h2><p class="muted">This is not a second Share canon. These rules are surfaced from the repository's governing ReLiC canon and machine-readable authority record.</p>
+<details class="drill" open><summary>Core doctrine <span class="tag">CANON</span></summary><div class="inside"><div class="duty"><b>Representation is not truth.</b><div class="muted">A rendered answer, model output, summary, or newest file is not automatically authoritative.</div></div><div class="duty"><b>Identity is not output equivalence.</b><div class="muted">Similar outputs do not establish identical records, authorities, models, or states.</div></div><div class="duty"><b>Evidence ≠ interpretation ≠ plan ≠ execution ≠ result.</b><div class="muted">ReLiC preserves the links instead of flattening them into one answer.</div></div><div class="duty"><b>Corrections remain evidence. Errors become durable lessons.</b><div class="muted">Superseded states and known failures remain traceable.</div></div><div class="duty"><b>Neurons organize; they do not legislate.</b><div class="muted">Plans and dependencies cannot silently create or override authority.</div></div><div class="duty"><b>RuneCore structures meaning; it does not invent authority.</b><div class="muted">Machine-readable structure preserves provenance rather than manufacturing permission.</div></div><a class="source" href="https://github.com/ryanlcole/ReLiC-AMD-Business-Continuity/blob/main/RELIC_CANON.md">View governing source → RELIC_CANON.md</a></div></details>
+<details class="drill"><summary>Rules, laws & memorandums <span class="tag">AUTHORITY</span></summary><div class="inside"><p class="law">Canon, rules, laws, and memorandums are authority-bearing record types. Their titles alone do not determine precedence.</p><p class="muted">ReLiC evaluates issuer/source, jurisdiction or project scope, effective time, explicit precedence, amendment/correction/supersession relationships, applicability, and provenance. A memorandum can change an applicable project rule when its issuing authority and scope permit it. A file named CANON cannot override a higher applicable authority merely because of its filename.</p><a class="source" href="https://github.com/ryanlcole/ReLiC-AMD-Business-Continuity/blob/main/RELIC_CANON.md#authority-records">View authority source →</a></div></details>
+<details class="drill"><summary>Human-law boundary <span class="tag">BOUNDARY</span></summary><div class="inside"><p class="law">Internal AI/project authority cannot authorize violation of applicable human law.</p><p class="muted">ReLiC preserves a conflict as evidence and requires lawful handling. Legal applicability may depend on jurisdiction, facts, provenance, and competent human/legal interpretation. Labeling a record “human law” does not itself prove legal validity.</p><a class="source" href="https://github.com/ryanlcole/ReLiC-AMD-Business-Continuity/blob/main/data/relic/authority.json">View machine-readable authority → authority.json</a></div></details>
+<details class="drill"><summary>All-required compliance gate <span class="tag">FAIL CLOSED</span></summary><div class="inside"><p class="law">Every applicable requirement must survive the authority test. One unresolved required authority prevents ReLiC from manufacturing a PASS.</p><pre class="code">applicable = resolve_authority(scope, time, provenance)
+results = evaluate_each(applicable)
+
+if any(result == "FAIL" for result in results):
+    outcome = "FAIL"
+elif any(result in {"UNKNOWN", "CONFLICT"} for result in results):
+    outcome = "UNRESOLVED — NO AUTHORITY TO CLAIM PASS"
+else:
+    outcome = "PASS"
+
+# Passing one authority never erases another applicable failure.
+# AI output is not human authority.
+# A blocked operation remains blocked rather than inventing permission.</pre><div class="note"><b>Proof rule:</b> the gate is conjunctive, not an average or vote. Share must expose the authority that failed or remains unresolved.</div></div></details>
+</section>
+<section class="card" style="margin-top:18px"><h2>Drill into temporal proof</h2><details class="drill"><summary>Amendment chain <span class="tag">TEMPORAL</span></summary><div class="inside"><pre class="code">ORDER-2026-01  status: RETIRED (in amended scope)
 ORDER-2026-02  status: ACTIVE
 ORDER-2026-02 --[AMENDS]--> ORDER-2026-01
 
-# NOTE: retirement date starts retention.
-# NOTE: unchanged provisions may remain active.
-# NOTE: original ORDER-2026-01 remains recoverable.</pre></div></details>
-<details class="drill"><summary>3. Affected-record resolver <span class="tag">PROOF OF WORK</span></summary><div class="inside"><p>ReLiC intersects scope and valid time, then returns explanations instead of updates.</p><pre class="code">def reveal_affected(order, records):
-    affected = []
-    for record in records:
-        in_time = record.event_date >= order.backpay_from
-        in_scope = record.classification in order.classifications
-        if in_time and in_scope:
-            affected.append({
-                "record_id": record.id,
-                "authority": order.id,
-                "reason": "event date + classification intersect authority",
-                "action": "REVIEW_REQUIRED"
-            })
-    return affected
+# Original remains recoverable.
+# Retirement date starts retention.
+# Unchanged provisions may remain active.</pre></div></details><details class="drill"><summary>Affected-record resolver <span class="tag">PROOF OF WORK</span></summary><div class="inside"><pre class="code">def reveal_affected(order, records):
+    return [{
+      "record_id": r.id,
+      "authority": order.id,
+      "reason": "scope + valid time intersect authority",
+      "action": "REVIEW_REQUIRED"
+    } for r in records if in_scope(r, order) and in_time(r, order)]
 
-# There is intentionally NO update(), delete(), pay(), or write-back here.</pre><div class="note"><b>Boundary:</b> ReLiC may reveal 14,283 affected records. That does not mean 14,283 records have been changed.</div></div></details>
-<details class="drill"><summary>4. Historical payment + correction <span class="tag">NO REWRITE</span></summary><div class="inside"><pre class="code">historical_fact = {"paid": 100.00, "event_date": "2026-08-01"}
-later_authority = {"correct_rate": 120.00, "known_on": "2026-10-09"}
-proposed_consequence = {"difference": 20.00, "state": "CANDIDATE"}
-
-# WRONG: historical_fact["paid"] = 120.00
-# RIGHT: preserve $100 fact + record $20 proposed consequence.</pre><p class="muted">The correction adds knowledge. It does not manufacture a different past.</p></div></details>
-<details class="drill"><summary>5. Retention and context collapse <span class="tag">DECAY</span></summary><div class="inside"><pre class="code">retention_start = authority.retired_on   # NOT authority.created_on
-expiry = retention_start + applicable_schedule.period
-
-if now >= expiry and disposition_is_authorized:
-    preserve(authority.original_source)
-    preserve(authority.provenance)
-    drop(authority.obsolete_programming)
-    convert_bound_fields_to_context()
-
-# Source permanence != representation permanence.</pre><div class="note"><b>Clear note:</b> disposition eligibility is not permission to destroy. Execution remains outside ReLiC.</div></div></details>
-<details class="drill"><summary>6. Retention schedule changed after retirement <span class="tag">HUMAN GATE</span></summary><div class="inside"><pre class="code">record.retired_on = "2019-01-01"
-old_schedule.period = "7 years"
-new_schedule.period = "6 years"   # effective later
+# No update(), delete(), pay(), or write-back.</pre></div></details><details class="drill"><summary>Retention schedule changed after retirement <span class="tag">HUMAN GATE</span></summary><div class="inside"><pre class="code">old_schedule.period = "7 years"
+new_schedule.period = "6 years"
 new_schedule.retroactivity = UNKNOWN
 
-result = {
-  "state": "HUMAN_AUDIT_REQUIRED",
-  "question": "Are already-retired records grandfathered?",
-  "mutation_allowed": false
-}
+result = "HUMAN_AUDIT_REQUIRED"
+mutation_allowed = false
 
-# UNKNOWN is preserved. ReLiC does not guess retroactivity.</pre></div></details>
-</section>
-<section class="card" style="margin-top:18px"><h2>Proof of work · expected output</h2><div class="proof"><div class="row"><strong>Original authority preserved</strong><div class="meta">Source survives amendment and retirement.</div></div><div class="row"><strong>Temporal chain exposed</strong><div class="meta">Effective, known, corrected, and retired dates remain independently inspectable.</div></div><div class="row"><strong>Affected records revealed</strong><div class="meta">Every candidate carries authority + selection reason.</div></div><div class="row human"><strong>Human boundary preserved</strong><div class="meta">Ambiguous grandfathering stops at HUMAN AUDIT REQUIRED.</div></div></div></section>
-<section class="card" style="margin-top:18px"><h2>What ReLiC returns</h2><p class="law">“These records appear affected. Here is the authority, effective date, knowledge date, amendment chain, retention state, and reason each record was selected. I have changed nothing.”</p></section><div class="footer">ReLiC Share · drillable reference proof · deterministic demonstration; external AI/AMD execution is not claimed until verified.</div></main></body></html>
+# UNKNOWN is preserved; retroactivity is not guessed.</pre></div></details></section>
+<section class="card" style="margin-top:18px"><h2>Judge's proof path</h2><div class="flow">OUTPUT → APPLICABLE CANON → AUTHORITY RECORD → SOURCE → TIME → PROVENANCE → COMPLIANCE → RESULT</div><p class="muted">A reviewer can drill from what ReLiC says back to why it was allowed to say it. Where authority is missing, conflicting, or failed, Share shows that state instead of presenting confidence as permission.</p></section>
+<section class="card" style="margin-top:18px"><h2>What ReLiC returns</h2><p class="law">“These records appear affected. Here is the authority, source, effective time, amendment chain, retention state, applicable canon, and reason each record was selected. I have changed nothing.”</p></section><div class="footer">ReLiC Share · canon-aware drillable reference proof · observer/continuity infrastructure; execution claims remain separately verified.</div></main></body></html>
