@@ -1,29 +1,84 @@
 [
   {
+    "id": "NEURON-RELIC-WHOLE",
+    "kind": "plan",
+    "title": "Whole ReLiC lifecycle",
+    "status": "active_scaffold",
+    "depends_on": ["AUTH-RELIC-CANON-001", "RELIC_CANON.md"],
+    "goal": "Keep ReLiC whole across Remember, Exist, Live, Imagine, Create, and Share; no demonstration or subsystem may redefine ReLiC as only one duty.",
+    "next": ["validate lifecycle evidence", "surface lifecycle status in ReLiC Share", "preserve transitions back into Remember"]
+  },
+  {
+    "id": "NEURON-REMEMBER",
+    "kind": "plan",
+    "title": "Remember continuity evidence",
+    "status": "active_scaffold",
+    "depends_on": ["data/relic/change_history.json", "data/relic/working_references.json", "ERRORS.md", "RELIC_CANON.md"],
+    "goal": "Preserve errors, corrections, canon, authority/law records, successes, known-working references, backups, provenance, decisions, and why changes occurred without promoting history into current authority.",
+    "next": ["link failures to corrections", "link successes to working references", "prevent silent deletion of superseded evidence"]
+  },
+  {
+    "id": "NEURON-EXIST",
+    "kind": "plan",
+    "title": "Exist as continual reference",
+    "status": "active_scaffold",
+    "depends_on": ["AUTH-RELIC-CANON-001", "AUTH-HUMAN-LAW-BOUNDARY-001", "NEURON-REMEMBER"],
+    "goal": "Resolve applicable ReLiC authority, provenance, time, known errors, and context before dependent downstream actions proceed; never convert missing or conflicting authority into permission.",
+    "next": ["validate authority record schema", "implement temporal/correction relationships", "surface unresolved conflicts"]
+  },
+  {
+    "id": "NEURON-LIVE",
+    "kind": "plan",
+    "title": "Live environmental observation",
+    "status": "historical_proof_plus_integration_plan",
+    "depends_on": ["NEURON-EXIST", "docs/RELIC_OS_EI_CANON.md"],
+    "goal": "Observe current system/environment performance and health through authorized telemetry while keeping historical readings distinct from current environmental identity.",
+    "next": ["connect authorized AMD telemetry when available", "define health/performance invariants", "record current-state provenance"]
+  },
+  {
+    "id": "NEURON-IMAGINE",
+    "kind": "plan",
+    "title": "Imagine and test hypotheses",
+    "status": "active_scaffold",
+    "depends_on": ["NEURON-EXIST", "NEURON-LIVE"],
+    "goal": "Test truth versus hypothesis/fiction without promoting plausibility to fact; preserve known, evidence, inference, hypothesis, test, and result as distinguishable states.",
+    "next": ["define hypothesis record schema", "attach tests and evidence", "require verification before promotion"]
+  },
+  {
+    "id": "NEURON-CREATE",
+    "kind": "plan",
+    "title": "Create authority-following reports",
+    "status": "active_scaffold",
+    "depends_on": ["NEURON-REMEMBER", "NEURON-EXIST", "NEURON-LIVE", "NEURON-IMAGINE", "NEURON-RUNECORE"],
+    "goal": "Create traceable context/report packages that AI, humans, and authorized connectors can follow without losing authority, provenance, uncertainty, errors, tests, or results.",
+    "next": ["define report schema", "attach authority trace", "expose verification and unresolved states"]
+  },
+  {
+    "id": "NEURON-SHARE",
+    "kind": "plan",
+    "title": "Share ReLiC with AMD",
+    "status": "active_hackathon_surface",
+    "depends_on": ["NEURON-RELIC-WHOLE", "NEURON-CREATE"],
+    "goal": "Expose ReLiC's inner workings to AMD for hackathon review. Share is a proof window into ReLiC, not a replacement for ReLiC.",
+    "next": ["keep judge proof drillable", "distinguish proven/historical/proposed claims", "return new evidence to Remember"]
+  },
+  {
     "id": "NEURON-AUTHORITY",
     "kind": "plan",
     "title": "Authority resolution",
     "status": "active_scaffold",
-    "depends_on": ["AUTH-RELIC-CANON-001", "AUTH-HUMAN-LAW-BOUNDARY-001"],
+    "depends_on": ["NEURON-EXIST"],
     "goal": "Resolve applicable authority records without converting plans or model outputs into authority.",
-    "next": [
-      "validate authority record schema",
-      "implement temporal and correction relationships",
-      "surface unresolved authority conflicts for human review"
-    ]
+    "next": ["validate authority record schema", "implement temporal and correction relationships", "surface unresolved authority conflicts for human review"]
   },
   {
     "id": "NEURON-CONTINUITY",
     "kind": "plan",
     "title": "Change and recovery continuity",
     "status": "active_scaffold",
-    "depends_on": ["data/relic/change_history.json", "data/relic/working_references.json", "ERRORS.md"],
+    "depends_on": ["NEURON-REMEMBER"],
     "goal": "Preserve why a change happened and maintain evidence of known-working states.",
-    "next": [
-      "automate decision/change record validation",
-      "link failures to corrections and working references",
-      "prevent silent deletion of superseded evidence"
-    ]
+    "next": ["automate decision/change record validation", "link failures to corrections and working references", "prevent silent deletion of superseded evidence"]
   },
   {
     "id": "NEURON-RUNECORE",
@@ -32,27 +87,23 @@
     "status": "active_scaffold",
     "depends_on": ["RELIC_CANON.md"],
     "goal": "Represent evidence, authority, intent, relationships, and execution boundaries in a stable structure without inventing authority.",
-    "next": [
-      "implement RuneCore validation models",
-      "map demo policy records into runes",
-      "build deterministic authority trace before model inference"
-    ]
+    "next": ["implement RuneCore validation models", "map demo policy records into runes", "build deterministic authority trace before model inference"]
   },
   {
     "id": "NEURON-AMD",
     "kind": "plan",
-    "title": "AMD inference integration",
-    "status": "blocked_until_event_endpoint",
-    "depends_on": ["NEURON-RUNECORE"],
-    "goal": "Run the demonstrated model inference on verified AMD infrastructure while preserving ReLiC evidence context.",
-    "next": ["configure event endpoint", "verify AMD execution", "record verification evidence"]
+    "title": "AMD inference and environmental integration",
+    "status": "blocked_until_verified_amd_interfaces",
+    "depends_on": ["NEURON-RUNECORE", "NEURON-LIVE", "NEURON-IMAGINE"],
+    "goal": "Run verified AMD-backed inference and, where authorized interfaces exist, test Environmental Intelligence against current processor/system telemetry while preserving ReLiC evidence context.",
+    "next": ["configure event endpoint", "verify AMD execution", "identify authorized telemetry interfaces", "record verification evidence"]
   },
   {
     "id": "NEURON-EVOLUS",
     "kind": "plan",
     "title": "Evolus workflow integration",
     "status": "blocked_until_event_workspace",
-    "depends_on": ["NEURON-AUTHORITY", "NEURON-RUNECORE"],
+    "depends_on": ["NEURON-AUTHORITY", "NEURON-RUNECORE", "NEURON-CREATE"],
     "goal": "Execute or escalate business workflows using verified Evolus building blocks without letting workflow state overwrite authority history.",
     "next": ["connect official workspace", "select at least two required building blocks", "record verified API interactions"]
   }
