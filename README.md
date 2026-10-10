@@ -1,6 +1,12 @@
-# ReLiC — AMD Hackathon
+# ReLiC Share — AMD Hackathon
 
 **Hackathon project — AMD Developer Hackathon: ACT III**
+
+## Name
+
+**ReLiC = Remember · Exist · Live · Imagine · Create**
+
+**ReLiC Share = Remember · Exist · Live · Imagine · Create · Share**
 
 ReLiC is ReLiC and is never only a portion of the whole.
 
@@ -8,16 +14,16 @@ ReLiC is ReLiC and is never only a portion of the whole.
 
 **EI = Environmental Intelligence.**
 
-This repository contains the hackathon implementation, continuity records, governing canon, tests, business demonstration, AMD/vLLM connection boundary, and ReLiC Share proof surface.
+This public repository is scoped to the hackathon. It contains the hackathon implementation, continuity records, governing canon, tests, synthetic business demonstration, AMD/vLLM connection boundary, and ReLiC Share proof surface. Private/non-hackathon ReLiC work is not part of this repository or proof surface.
 
 ## ReLiC lifecycle
 
-- **REMEMBER** — errors, corrections, canon, authority/law records, success, known-working references, backups, provenance, decisions, and why changes occurred.
-- **EXIST** — continual reference boundary: applicable ReLiC authority, provenance, time, errors, and context are resolved before dependent downstream action proceeds.
-- **LIVE** — current environmental observation. Hardware/performance monitoring requires authorized telemetry; AMD hardware-health monitoring is not claimed as currently connected.
-- **IMAGINE** — hypotheses/fiction remain distinguishable from known facts, evidence, tests, and results.
-- **CREATE** — traceable report/context package retaining authority, provenance, uncertainty, errors, tests, and results.
-- **SHARE** — inspection surface for AMD. Share exposes ReLiC; Share is not ReLiC itself.
+- **REMEMBER** — preserve errors, corrections, canon, authority/law records, success, known-working references, backups, provenance, decisions, and why changes occurred.
+- **EXIST** — remain a continual reference boundary: applicable ReLiC authority, provenance, time, errors, and context are resolved before dependent downstream action proceeds.
+- **LIVE** — observe the current hackathon environment through authorized interfaces. Historical state remains historical rather than silently becoming current state.
+- **IMAGINE** — permit hypotheses while keeping fiction/hypothesis distinguishable from known facts, evidence, tests, and results.
+- **CREATE** — create a traceable report/context package retaining authority, provenance, uncertainty, errors, tests, and results.
+- **SHARE** — expose the hackathon implementation and proof to AMD. Share is the public proof surface into ReLiC; it is not a replacement for ReLiC.
 
 “Remember. Explain. Prove.” describes the Share proof experience, not the whole ReLiC lifecycle.
 
@@ -29,7 +35,7 @@ This repository contains the hackathon implementation, continuity records, gover
 
 ### Temporal continuity
 
-`app/relic/temporal.py` contains valid-time/recorded-time structures and reconciliation logic. Original work/payment records are not rewritten by the reconciliation function.
+`app/relic/temporal.py` contains valid-time/recorded-time structures, supersession handling, applicable-rate resolution, and reconciliation logic. Original work/payment records are not rewritten by the reconciliation function.
 
 ### RuneCore / continuity inventory
 
@@ -43,7 +49,7 @@ This repository contains the hackathon implementation, continuity records, gover
 
 `app/inference.py` contains configuration and an OpenAI-compatible `/chat/completions` call for an event AMD-hosted vLLM endpoint. The file explicitly states that endpoint configuration does not prove AMD backing; infrastructure verification is separate.
 
-AMD-backed inference is not claimed as verified in this repository until an AMD endpoint is configured and independently verified.
+AMD-backed inference is not claimed as verified until an AMD endpoint is configured and independently verified.
 
 ### ReLiC continuity records
 
@@ -53,22 +59,11 @@ AMD-backed inference is not claimed as verified in this repository until an AMD 
 - `data/relic/change_history.json` — material project change records.
 - `data/relic/working_references.json` — known-working recovery/comparison reference.
 - `data/relic/neurons.json` — plan/dependency organization; neurons do not legislate.
-- `docs/RELIC_OS_EI_CANON.md` — historical OS/EFI Environmental Intelligence continuity record with explicit proof-status boundaries.
 - `docs/index.html` — ReLiC Share public inspection surface.
-
-## Historical OS / EFI record
-
-`docs/RELIC_OS_EI_CANON.md` preserves the historical ReLiC OS/EFI architecture and named EFI components as a **historical proof record**. Their names in that record do not claim their binaries/source have been copied into this repository or that EFI deployment is current.
 
 ## Errors retained
 
-`ERRORS.md` currently retains three recorded failures/corrections:
-
-1. pytest import path failure in CI.
-2. static demo source existed before it was actually served.
-3. Replit was unsuitable as the continuing no-surprise-cost host.
-
-They remain in the ledger after correction because errors are evidence.
+`ERRORS.md` currently retains three recorded failures/corrections: pytest import path failure in CI; static demo source existing before it was actually served; and Replit being unsuitable as the continuing no-surprise-cost host. They remain in the ledger after correction because errors are evidence.
 
 ## Known-working reference
 
@@ -76,11 +71,7 @@ They remain in the ledger after correction because errors are evidence.
 
 ## Tests
 
-Repository tests are under `tests/`:
-
-- `tests/test_engine.py`
-- `tests/test_runecore.py`
-- `tests/test_temporal.py`
+Repository tests are under `tests/`: `tests/test_engine.py`, `tests/test_runecore.py`, and `tests/test_temporal.py`.
 
 Run:
 
@@ -88,11 +79,15 @@ Run:
 pytest -q
 ```
 
+Test-file presence is not proof that the current commit passed CI. Verification status must be reported separately.
+
 ## Current proof boundaries
 
 ### Present in this repository
 
+- complete hackathon ReLiC lifecycle canon
 - deterministic business resolver
+- synthetic policy evidence corpus
 - temporal continuity code
 - RuneCore continuity inventory
 - governing canon
@@ -101,18 +96,16 @@ pytest -q
 - API and static surfaces
 - AMD/vLLM connection code
 - tests
-- historical OS/EI continuity record
+- ReLiC Share proof page
 
 ### Not claimed as currently verified
 
 - AMD-backed inference execution
-- AMD hardware-health telemetry
-- silicon-level error prevention
-- processor tuning results
-- current EFI deployment
+- AMD environmental/telemetry integration beyond the connection boundary present in code
 - Evolus integration
 - general legal reasoning
 - production deployment
+- current-commit CI success unless independently verified and recorded
 
 ## Hosting
 
