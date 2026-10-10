@@ -29,6 +29,16 @@
     "scope": "all_ai_and_project_actions",
     "effective_date": "2026-10-09",
     "status": "boundary",
-    "statement": "Internal AI/project authority cannot authorize violation of applicable human law; legal applicability still requires valid provenance and appropriate human interpretation."
+    "statement": "Internal AI/project authority cannot authorize violation of applicable human law; legal applicability still requires valid provenance and appropriate human interpretation.",
+    "source_architecture": "docs/HUMAN_LAW_SOURCE_ARCHITECTURE.md",
+    "source_registry": "data/relic/human_law_sources.json",
+    "implementation_status": "source_architecture_and_registry_only",
+    "not_claimed": [
+      "complete_human_law_corpus",
+      "automated_ingestion_of_all_sources",
+      "universal_precedence_engine",
+      "general_legal_reasoning",
+      "replacement_for_qualified_legal_review"
+    ]
   }
 ]
