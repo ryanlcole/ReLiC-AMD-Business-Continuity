@@ -1,67 +1,124 @@
-# ReLiC AMD Business Continuity
+# ReLiC — AMD Hackathon
 
-**Hackathon MVP — AMD Developer Hackathon: ACT III**
+**Hackathon project — AMD Developer Hackathon: ACT III**
 
-ReLiC is an experimental business-continuity layer for AI agents. Instead of treating the latest retrieved text as truth, it reconstructs a traceable chain of policies, exceptions, corrections, and superseding decisions before an AI model acts.
+ReLiC is ReLiC and is never only a portion of the whole.
 
-## Problem
+`REMEMBER -> EXIST -> LIVE -> IMAGINE -> CREATE -> SHARE -> REMEMBER`
 
-Business AI can retrieve a policy while missing the later correction that changes how the policy applies. That can produce confident but historically inconsistent decisions.
+**EI = Environmental Intelligence.**
 
-## MVP
+This repository contains the hackathon implementation, continuity records, governing canon, tests, business demonstration, AMD/vLLM connection boundary, and ReLiC Share proof surface.
 
-This repository demonstrates a narrow, measurable case: refund-policy decisions whose rules change over time.
+## ReLiC lifecycle
 
-1. Business records are loaded as dated evidence.
-2. ReLiC resolves which records remain applicable to the case.
-3. The resulting evidence chain is sent to an open model through an OpenAI-compatible endpoint.
-4. The model must return a decision with evidence identifiers.
-5. Low-confidence or contradictory cases can be handed to a human/workflow layer.
+- **REMEMBER** — errors, corrections, canon, authority/law records, success, known-working references, backups, provenance, decisions, and why changes occurred.
+- **EXIST** — continual reference boundary: applicable ReLiC authority, provenance, time, errors, and context are resolved before dependent downstream action proceeds.
+- **LIVE** — current environmental observation. Hardware/performance monitoring requires authorized telemetry; AMD hardware-health monitoring is not claimed as currently connected.
+- **IMAGINE** — hypotheses/fiction remain distinguishable from known facts, evidence, tests, and results.
+- **CREATE** — traceable report/context package retaining authority, provenance, uncertainty, errors, tests, and results.
+- **SHARE** — inspection surface for AMD. Share exposes ReLiC; Share is not ReLiC itself.
 
-## AMD role
+“Remember. Explain. Prove.” describes the Share proof experience, not the whole ReLiC lifecycle.
 
-The hackathon target is an open model served with **vLLM on AMD Developer Cloud / AMD GPU infrastructure**. The AMD-hosted model performs the inference shown in the final product. Local deterministic mode exists only so the application and tests can be developed before event GPU credentials are available.
+## Implemented repository content
 
-## Evolus role
+### Deterministic business proof
 
-The planned partner integration uses Evolus for business workflow execution and human escalation. Event credentials are never committed to this repository.
+`app/relic/engine.py` contains the deterministic refund-policy resolver. The synthetic policy corpus is under `data/demo-company/`. The resolver retains evidence identifiers in its result.
 
-## Status labels
+### Temporal continuity
 
-- **IMPLEMENTED** — code exists and can be tested from this repository.
-- **EXPERIMENTAL** — hypothesis or prototype; not represented as proven.
-- **PLANNED** — requires event infrastructure or remains to be implemented.
+`app/relic/temporal.py` contains valid-time/recorded-time structures and reconciliation logic. Original work/payment records are not rewritten by the reconciliation function.
 
-Current status:
+### RuneCore / continuity inventory
 
-- IMPLEMENTED: deterministic provenance/continuity resolver and demo API.
-- IMPLEMENTED: synthetic demo company policy/case corpus.
-- PLANNED: AMD Developer Cloud vLLM endpoint verification.
-- PLANNED: Evolus event-workspace integration.
-- EXPERIMENTAL: Wavecore representation experiments; not required for the MVP.
+`app/relic/runecore.py` loads machine-readable authority, change history, working references, and neurons and returns a continuity inventory. Constructing an authority rune does not prove legal/canonical validity or applicability.
 
-## Demo scenario
+### API
 
-- January: refunds over $500 require manager approval.
-- March: Enterprise Plus customers may receive refunds up to $1,000 without manager approval.
-- April: correction clarifies that the exception applies only while Enterprise Plus is active.
+`app/main.py` exposes the static demo plus `/status`, `/continuity`, `/evidence`, and `/decision`. The decision endpoint currently identifies its inference mode as `deterministic-local-reference`.
 
-A $750 refund for Enterprise Standard should therefore require manager approval. The same refund for an active Enterprise Plus customer should be eligible for automatic approval.
+### AMD/vLLM boundary
 
-## Sustainable preview hosting
+`app/inference.py` contains configuration and an OpenAI-compatible `/chat/completions` call for an event AMD-hosted vLLM endpoint. The file explicitly states that endpoint configuration does not prove AMD backing; infrastructure verification is separate.
 
-The repository now includes a **zero-runtime-cost static reference demo** in `docs/` for GitHub Pages.
+AMD-backed inference is not claimed as verified in this repository until an AMD endpoint is configured and independently verified.
 
-This is intentional ReLiC separation:
+### ReLiC continuity records
 
-- **Static reference demo** — deterministic browser-side decision logic; safe to publish without secrets.
-- **FastAPI service** — development/API boundary for tests and later server-side integration.
-- **AMD/vLLM inference** — remains separate until real AMD infrastructure is connected and verified.
-- **Evolus workflow** — remains separate until the event workspace is connected and verified.
+- `RELIC_CANON.md` — governing project canon.
+- `ERRORS.md` — durable failure/correction ledger.
+- `data/relic/authority.json` — machine-readable authority records.
+- `data/relic/change_history.json` — material project change records.
+- `data/relic/working_references.json` — known-working recovery/comparison reference.
+- `data/relic/neurons.json` — plan/dependency organization; neurons do not legislate.
+- `docs/RELIC_OS_EI_CANON.md` — historical OS/EFI Environmental Intelligence continuity record with explicit proof-status boundaries.
+- `docs/index.html` — ReLiC Share public inspection surface.
 
-The public preview should be hosted from the `main` branch's `/docs` folder with GitHub Pages. No API keys belong in the static site.
+## Historical OS / EFI record
 
-## Run locally
+`docs/RELIC_OS_EI_CANON.md` preserves the historical ReLiC OS/EFI architecture and named EFI components as a **historical proof record**. Their names in that record do not claim their binaries/source have been copied into this repository or that EFI deployment is current.
+
+## Errors retained
+
+`ERRORS.md` currently retains three recorded failures/corrections:
+
+1. pytest import path failure in CI.
+2. static demo source existed before it was actually served.
+3. Replit was unsuitable as the continuing no-surprise-cost host.
+
+They remain in the ledger after correction because errors are evidence.
+
+## Known-working reference
+
+`data/relic/working_references.json` records commit `43d5fc2fa4bfda0b5770e8fef382d751c0a21679` as a known-working Business Continuity MVP reference before authority-core construction. It explicitly does not claim AMD-backed inference, Evolus integration, general legal reasoning, or production deployment.
+
+## Tests
+
+Repository tests are under `tests/`:
+
+- `tests/test_engine.py`
+- `tests/test_runecore.py`
+- `tests/test_temporal.py`
+
+Run:
+
+```bash
+pytest -q
+```
+
+## Current proof boundaries
+
+### Present in this repository
+
+- deterministic business resolver
+- temporal continuity code
+- RuneCore continuity inventory
+- governing canon
+- authority/change/working-reference/neuron records
+- durable error ledger
+- API and static surfaces
+- AMD/vLLM connection code
+- tests
+- historical OS/EI continuity record
+
+### Not claimed as currently verified
+
+- AMD-backed inference execution
+- AMD hardware-health telemetry
+- silicon-level error prevention
+- processor tuning results
+- current EFI deployment
+- Evolus integration
+- general legal reasoning
+- production deployment
+
+## Hosting
+
+The static ReLiC Share surface is in `docs/` for GitHub Pages. Runtime/API deployment remains separate from the static proof surface. No API keys belong in the static site or repository.
+
+## Local run
 
 ```bash
 python -m venv .venv
@@ -70,24 +127,6 @@ python -m venv .venv
 pip install -r requirements.txt
 uvicorn app.main:app --reload
 ```
-
-Then open `/docs` on the local server and POST a case to `/decision`.
-
-Run tests:
-
-```bash
-pytest -q
-```
-
-## AMD / vLLM configuration
-
-Copy `.env.example` to `.env` and set the event-provided values when available. Never commit `.env`.
-
-The integration expects an OpenAI-compatible vLLM endpoint and can therefore be wired to the AMD-hosted model without changing ReLiC's provenance resolver.
-
-## Repository principles
-
-ReLiC separates evidence from inference. A source record, an interpretation of that record, and the model's final answer are different objects. Corrections are retained rather than silently replacing history, so the decision can explain not only what rule applied but how the current rule emerged.
 
 ## License
 
