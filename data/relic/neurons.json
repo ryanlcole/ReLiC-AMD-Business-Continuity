@@ -30,10 +30,10 @@
     "id": "NEURON-LIVE",
     "kind": "plan",
     "title": "Live environmental observation",
-    "status": "historical_proof_plus_integration_plan",
-    "depends_on": ["NEURON-EXIST", "docs/RELIC_OS_EI_CANON.md"],
-    "goal": "Observe current system/environment performance and health through authorized telemetry while keeping historical readings distinct from current environmental identity.",
-    "next": ["connect authorized AMD telemetry when available", "define health/performance invariants", "record current-state provenance"]
+    "status": "integration_plan",
+    "depends_on": ["NEURON-EXIST"],
+    "goal": "Observe the current hackathon environment through authorized interfaces while keeping historical readings distinct from current environmental identity.",
+    "next": ["connect authorized AMD interfaces when available", "define event-relevant environmental invariants", "record current-state provenance"]
   },
   {
     "id": "NEURON-IMAGINE",
@@ -59,8 +59,8 @@
     "title": "Share ReLiC with AMD",
     "status": "active_hackathon_surface",
     "depends_on": ["NEURON-RELIC-WHOLE", "NEURON-CREATE"],
-    "goal": "Expose ReLiC's inner workings to AMD for hackathon review. Share is a proof window into ReLiC, not a replacement for ReLiC.",
-    "next": ["keep judge proof drillable", "distinguish proven/historical/proposed claims", "return new evidence to Remember"]
+    "goal": "Expose ReLiC's hackathon implementation and proof to AMD. Share is a proof window into ReLiC, not a replacement for ReLiC.",
+    "next": ["keep judge proof drillable", "distinguish verified/proposed/unknown claims", "return new evidence to Remember"]
   },
   {
     "id": "NEURON-AUTHORITY",
@@ -95,8 +95,8 @@
     "title": "AMD inference and environmental integration",
     "status": "blocked_until_verified_amd_interfaces",
     "depends_on": ["NEURON-RUNECORE", "NEURON-LIVE", "NEURON-IMAGINE"],
-    "goal": "Run verified AMD-backed inference and, where authorized interfaces exist, test Environmental Intelligence against current processor/system telemetry while preserving ReLiC evidence context.",
-    "next": ["configure event endpoint", "verify AMD execution", "identify authorized telemetry interfaces", "record verification evidence"]
+    "goal": "Run verified AMD-backed inference and test Environmental Intelligence through event-authorized AMD interfaces while preserving ReLiC evidence context.",
+    "next": ["configure event endpoint", "verify AMD execution", "identify event-authorized environmental interfaces", "record verification evidence"]
   },
   {
     "id": "NEURON-EVOLUS",
@@ -104,7 +104,7 @@
     "title": "Evolus workflow integration",
     "status": "blocked_until_event_workspace",
     "depends_on": ["NEURON-AUTHORITY", "NEURON-RUNECORE", "NEURON-CREATE"],
-    "goal": "Execute or escalate business workflows using verified Evolus building blocks without letting workflow state overwrite authority history.",
+    "goal": "Execute or escalate hackathon business workflows using verified Evolus building blocks without letting workflow state overwrite authority history.",
     "next": ["connect official workspace", "select at least two required building blocks", "record verified API interactions"]
   }
 ]
