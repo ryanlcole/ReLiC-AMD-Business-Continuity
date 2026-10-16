@@ -2,6 +2,7 @@
 from pathlib import Path
 import csv,json,math,subprocess,tempfile
 root=Path(__file__).resolve().parents[1]
+subprocess.run(['make','cpu'],cwd=root,check=True)
 with tempfile.TemporaryDirectory() as td:
     p=str(Path(td)/'run')
     cmd=[str(root/'bin/runecore_cpu'),'32','5','0.001','42',p]
