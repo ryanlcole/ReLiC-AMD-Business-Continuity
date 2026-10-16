@@ -1,0 +1,30 @@
+{
+  "schema": "RELIC-CONTROL-EVIDENCE/1",
+  "record_class": "observed_test_result",
+  "authority": "operator-observed current-session evidence",
+  "canonical": false,
+  "execution_provider": "aws-bedrock-control",
+  "verification_scope": "independent-control-only",
+  "amd_backed": false,
+  "observed_at": "2026-10-16T16:35:51.613135+00:00",
+  "region": "us-east-1",
+  "model": "openai.gpt-oss-20b-1:0",
+  "status": "observed",
+  "stop_reason": "end_turn",
+  "latency_ms": 498,
+  "usage": {
+    "input_tokens": 78,
+    "output_tokens": 56,
+    "total_tokens": 134
+  },
+  "output_text": "RELIC_AWS_OBSERVE_PASS",
+  "output_sha256": "f443953adfaae1ae3952d2a962168d98d24bdfbd10755a77ece76fe350e9c90c",
+  "local_tests": "17 passed in 0.14s",
+  "git_head_before_evidence_commit": "628f8a82ff6a873d5b8860d89910e0d5f076c404",
+  "github_ci": {
+    "run_number": 52,
+    "run_id": 38933169952,
+    "conclusion": "success"
+  },
+  "boundary": "AWS control success is not evidence of AMD-backed execution. This record does not establish HIP parity, AMD TokenFactory authorization, or durable ReLiC canon ingestion."
+}
