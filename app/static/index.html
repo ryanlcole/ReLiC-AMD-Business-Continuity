@@ -4,6 +4,26 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ReLiC Business Continuity</title>
 <style>
-body{font-family:system-ui,sans-serif;max-width:900px;margin:40px auto;padding:0 18px;background:#111;color:#eee}main{background:#1c1c1c;padding:24px;border-radius:16px}label{display:block;margin:14px 0 5px}input,select,button{font:inherit;padding:10px;border-radius:8px;border:1px solid #555}button{margin-top:18px;cursor:pointer}pre{white-space:pre-wrap;background:#090909;padding:16px;border-radius:10px;overflow:auto}.status{font-size:.9rem;color:#bbb}</style>
+body{font-family:system-ui,sans-serif;max-width:900px;margin:40px auto;padding:0 18px;background:#111;color:#eee}main{background:#1c1c1c;padding:24px;border-radius:16px}label{display:block;margin:14px 0 5px}input,select,button{font:inherit;padding:10px;border-radius:8px;border:1px solid #555}button{margin:18px 8px 0 0;cursor:pointer}pre{white-space:pre-wrap;background:#090909;padding:16px;border-radius:10px;overflow:auto}.status{font-size:.9rem;color:#bbb}.proof{padding:12px;border:1px solid #444;border-radius:10px;margin:14px 0}
+</style>
 </head>
-<body><main><h1>ReLiC Business Continuity</h1><p>Trace a business decision through policy, exception, and correction history.</p><form id="f"><label>Refund amount</label><input id="amount" type="number" min="0.01" step="0.01" value="750" required><label>Customer tier</label><select id="tier"><option>Enterprise Standard</option><option>Enterprise Plus</option><option>Standard</option></select><label><input id="active" type="checkbox"> Enterprise Plus contract active</label><button>Evaluate with ReLiC</button></form><h2>Decision trace</h2><pre id="out">Submit a case to see its decision and evidence identifiers.</pre><p class="status">AMD-backed inference is shown only after an event endpoint is configured and verified.</p></main><script>document.getElementById('f').addEventListener('submit',async e=>{e.preventDefault();const out=document.getElementById('out');out.textContent='Evaluating…';try{const r=await fetch('/decision',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({amount:Number(amount.value),customer_tier:tier.value,enterprise_plus_active:active.checked})});out.textContent=JSON.stringify(await r.json(),null,2)}catch(err){out.textContent=String(err)}})</script></body></html>
+<body><main>
+<h1>R.e.L.i.C. Environmental Intelligence</h1>
+<p>Remember. Explain. Prove.</p>
+<div class="proof"><strong>Proof boundary</strong><br>Deterministic ReLiC decides. AMD TokenFactory may explain. AMD output is validated against the deterministic action and evidence IDs before it is shown.</div>
+<form id="f">
+<label>Refund amount</label><input id="amount" type="number" min="0.01" step="0.01" value="750" required>
+<label>Customer tier</label><select id="tier"><option>Enterprise Standard</option><option selected>Enterprise Plus</option><option>Standard</option></select>
+<label><input id="active" type="checkbox" checked> Enterprise Plus contract active</label>
+<button id="local" type="submit">1. Evaluate with ReLiC</button>
+<button id="amd" type="button">2. Explain with AMD TokenFactory</button>
+</form>
+<h2>Proof trace</h2><pre id="out">Run the deterministic decision first, then request a bounded AMD explanation.</pre>
+<p class="status">Verified boundary: AMD TokenFactory sentinel execution PASS. Direct MI300X/HIP/ROCm parity remains UNTESTED.</p>
+</main>
+<script>
+const payload=()=>({amount:Number(amount.value),customer_tier:tier.value,enterprise_plus_active:active.checked});
+async function run(path,label){out.textContent=label;try{const r=await fetch(path,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload())});const body=await r.json();out.textContent=JSON.stringify(body,null,2)}catch(err){out.textContent=String(err)}}
+f.addEventListener('submit',e=>{e.preventDefault();run('/decision','Running deterministic ReLiC decision…')});
+amd.addEventListener('click',()=>run('/decision/amd-explain','Calling AMD TokenFactory and validating returned explanation…'));
+</script></body></html>
