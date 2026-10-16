@@ -2,10 +2,12 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
-from fastapi import FastAPI
+
+from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
+from app.amd_demo import run_amd_explanation
 from app.inference import amd_configured
 from app.relic import continuity_snapshot, evaluate_case
 
@@ -15,7 +17,7 @@ DEMO_PATH = ROOT / "app" / "static" / "index.html"
 
 app = FastAPI(
     title="ReLiC AMD Business Continuity",
-    version="0.3.0",
+    version="0.4.0",
     description="Provenance-aware business decision continuity prototype.",
 )
 
@@ -39,7 +41,12 @@ def status() -> dict:
         "runecore": "authority-continuity-scaffold",
         "continuity": continuity_snapshot(),
         "amd_vllm_configured": amd_configured(),
-        "warning": "AMD execution is not claimed until the event endpoint is configured and verified.",
+        "amd_tokenfactory_execution_evidence": "PASS",
+        "direct_hip_rocm_parity": "UNTESTED",
+        "warning": (
+            "TokenFactory execution has controlled sentinel evidence. "
+            "Direct MI300X/HIP/ROCm parity is not claimed."
+        ),
     }
 
 
@@ -62,4 +69,31 @@ def decision(case: RefundCase) -> dict:
         "decision": result.as_dict(),
         "inference_mode": "deterministic-local-reference",
         "amd_vllm_configured": amd_configured(),
+    }
+
+
+@app.post("/decision/amd-explain")
+def decision_amd_explain(case: RefundCase) -> dict:
+    if not amd_configured():
+        raise HTTPException(status_code=503, detail="AMD TokenFactory endpoint is not configured")
+
+    result = evaluate_case(case.amount, case.customer_tier, case.enterprise_plus_active)
+    case_data = case.model_dump()
+    decision_data = result.as_dict()
+
+    try:
+        explanation = run_amd_explanation(case_data, decision_data)
+    except (ValueError, KeyError) as exc:
+        raise HTTPException(status_code=502, detail=f"AMD output failed deterministic validation: {exc}") from exc
+
+    return {
+        "case": case_data,
+        "decision": decision_data,
+        "inference_mode": "amd-tokenfactory-bounded-explanation",
+        "amd": explanation.as_dict(),
+        "proof_boundary": {
+            "deterministic_decision_authoritative": True,
+            "model_output_is_canon": False,
+            "direct_hip_rocm_parity": "UNTESTED",
+        },
     }

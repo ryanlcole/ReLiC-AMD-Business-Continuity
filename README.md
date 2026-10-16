@@ -45,11 +45,13 @@ This public repository is scoped to the hackathon. It contains the hackathon imp
 
 `app/main.py` exposes the static demo plus `/status`, `/continuity`, `/evidence`, and `/decision`. The decision endpoint currently identifies its inference mode as `deterministic-local-reference`.
 
-### AMD/vLLM boundary
+### AMD/TokenFactory boundary
 
-`app/inference.py` contains configuration and an OpenAI-compatible `/chat/completions` call for an event AMD-hosted vLLM endpoint. The file explicitly states that endpoint configuration does not prove AMD backing; infrastructure verification is separate.
+`app/inference.py` contains configuration and an OpenAI-compatible `/chat/completions` call for the event AMD TokenFactory endpoint.
 
-AMD-backed inference is not claimed as verified until an AMD endpoint is configured and independently verified.
+A single controlled sentinel call through `amd_chat` returned the requested sentinel `RELIC_AMD_TOKENFACTORY_PASS` from model `self-dploy/DeepSeek-V4-Flash`. Sanitized non-secret response metadata is preserved in `evidence/amd_tokenfactory_sentinel.json`.
+
+This verifies AMD TokenFactory inference execution for the hackathon integration boundary. It does **not** establish direct MI300X execution, HIP/ROCm parity, or ReLiC ingestion of that observation. Those remain separate evidence gates.
 
 ### ReLiC continuity records
 
@@ -71,7 +73,7 @@ AMD-backed inference is not claimed as verified until an AMD endpoint is configu
 
 ## Tests
 
-Repository tests are under `tests/`: `tests/test_engine.py`, `tests/test_runecore.py`, and `tests/test_temporal.py`.
+Repository tests are under `tests/`, including the deterministic application tests and the RuneCore CPU reference test. The CPU test builds its prerequisite executable before executing the deterministic repeatability checks.
 
 Run:
 
@@ -79,11 +81,11 @@ Run:
 pytest -q
 ```
 
-Test-file presence is not proof that the current commit passed CI. Verification status must be reported separately.
+The CI run associated with the CPU prerequisite correction completed successfully: tests passed and the application imported successfully. CI status is commit-specific; later commits must be verified independently.
 
 ## Current proof boundaries
 
-### Present in this repository
+### Present and verified where stated
 
 - complete hackathon ReLiC lifecycle canon
 - deterministic business resolver
@@ -94,18 +96,20 @@ Test-file presence is not proof that the current commit passed CI. Verification 
 - authority/change/working-reference/neuron records
 - durable error ledger
 - API and static surfaces
-- AMD/vLLM connection code
-- tests
+- AMD TokenFactory connection code
+- successful controlled TokenFactory sentinel execution with sanitized evidence
+- deterministic RuneCore CPU reference test integrated into CI
 - ReLiC Share proof page
 
 ### Not claimed as currently verified
 
-- AMD-backed inference execution
-- AMD environmental/telemetry integration beyond the connection boundary present in code
+- direct MI300X execution
+- HIP/ROCm CPU↔GPU numerical parity
+- AMD environmental/telemetry integration beyond the TokenFactory inference boundary
+- ReLiC ingestion/canonization of the TokenFactory observation
 - Evolus integration
 - general legal reasoning
 - production deployment
-- current-commit CI success unless independently verified and recorded
 
 ## Hosting
 
